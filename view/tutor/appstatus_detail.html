@@ -1,0 +1,74 @@
+	<div class="article con_19" ng-controller="TutorAppStatusDetailController">
+		<form class="hidden" name="form_tutorAppStatusDetail" action="controller/tutor_appstatus_detail.php" ng-asyncform="auto" param="param">
+			<input type="text" name="regid" ng-model="param.regid"/>
+		</form>
+        
+        <h2 class="con_19_tit">My Application Status Details</h2>
+
+        <div class="con_19_list">
+            <dl>
+                <dt>Area</dt>
+                <dd>{{info.location}}</dd>
+            </dl>
+            <dl>
+                <dt>Day</dt>
+                <dd>{{cdaysFmt(info.cdaysmo, info.cdaystu, info.cdayswe, info.cdaysth, info.cdaysfr, info.cdayssa, info.cdayssu)}} </dd>
+            </dl>
+            <dl>
+                <dt>Time</dt>
+                <dd>{{dtFmt(info.stimegubun, info.stimehh, info.stimemm)}} ~ {{dtFmt(info.etimegubun, info.etimehh, info.etimemm)}}</dd>
+            </dl>
+            <dl>
+                <dt>Start Date</dt>
+                <dd>{{info.sdate}}</dd>
+            </dl>
+            <dl>
+                <dt>Class Level</dt>
+                <dd>{{info.level}}</dd>
+            </dl>
+            <dl>
+                <dt>Status</dt>
+                <dd>
+                	<span ng-if="info.status == '0'">모집중</span>
+                	<span ng-if="info.status == '1'">모집완료</span>
+                	<span class="point-color" ng-if="info.status == '2'">진행 중</span>
+                	<span ng-if="info.status == '3'">완료</span>
+                	<span ng-if="info.status == '4'">클래스캔슬</span>
+                </dd>
+            </dl>
+        </div>
+        <!--//con_19_list-->
+
+        <div class="message">
+            <div>
+                <h3 class="dt">message</h3>
+                <div class="message_list" ng-repeat="item in info.msglist">
+                    <div class="message_tit">
+                        <ul class="floatLeft">
+                            <li class="pic_area floatLeft">
+                            	<span class="pic_area_inner">
+                            		<img ng-src="{{item.writer_imgfile}}" ng-if="item.writer_imgfile"/>
+                            		<img src="img/pic_man.jpg" ng-if="!item.writer_imgfile"/>
+                            	</span>
+                            </li>
+                            <li class="name floatLeft">{{item.ename}}</li>
+                        </ul>
+                        <ul class="floatRight">
+                            <li class="date point-color">{{item.createdate}}</li>
+                        </ul>
+                    </div>
+                    <!--//message_tit-->
+
+                    <p class="message_con" ng-bind-html="item.contents"></p>
+                    <!--//message_con-->
+                </div>
+                <!--//message_list-->
+            </div>
+        </div>
+        <!--//message-->
+
+        <div class="btn_text"><a href="#" ng-back>Back</a></div>
+    </div>
+    <!--//con_19-->
+
+<!--//본문삽입끝-->

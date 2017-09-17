@@ -1,0 +1,70 @@
+<div class="con_6" ng-controller="TutorClassDetailAttendListForInputController">
+	<div class="tab_con">
+        <div class="class_con">
+            
+            <div day-selector options="selectorOptions">{{weekday}}, {{day}} <span class="lowercase">{{month}}</span></div>
+
+            <form name="form_classDetailAttendListForInput" class="hidden" action="controller/tutor_class_attendlist_for_input.php" method="get" ng-asyncform="auto" param="param">
+                <input type="text" name="classid" value="" ng-model="param.classid"/>
+                <input type="text" name="datestart" value="" ng-model="param.datestart"/>
+            </form>
+			
+			<div ng-repeat="item in attendlist">
+				<div ng-controller="TutorClassDetailAttendInputController">
+					<var ng-init="param = item"></var>
+					<form name="form_classDetailAttendInput" class="check_list" action="controller/tutor_class_attendinput" ng-asyncform="">
+						<div class="hidden">
+							<input type="text" name="regid" ng-model="param.regid"/>
+			                <input type="text" name="memberseq" ng-model="param.memberseq"/>
+			                <input type="text" name="tutorseq" ng-model="$parent.param.tutorseq"/>
+			                <input type="text" name="classid" ng-model="param.classid"/>
+			                <input type="text" name="datestart" ng-model="$parent.param.datestart"/>
+			                <input type="text" name="timestart" ng-model="$parent.param.timestart"/>
+		                </div>
+		
+		                <div class="listLeft">
+		                    <ul>
+		                        <li class="pic_area">
+		                        	<img ng-src="img/pic_sample.jpg" alt="Student's Picture" class="in-item-picture" ng-if="item.memberimg != ''"/>
+                    				<img src="img/pic_sample.jpg" alt="Student's Picture" class="in-item-picture" ng-if="item.memberimg == ''"/>
+		                        </li>
+		                        <li class="name">{{item.membername}}</li>
+		                    </ul>
+		                    <div class="line"></div>
+		                </div>
+		                <!--//listLeft-->
+		                <div class="listRight">
+		                    <ul>
+		                        <li><label class="baseB blue" ng-class="{active: param.status == 'Y'}">
+		                        	<input type="radio" name="status" value="Y" ng-model="param.status" ng-change="onChange()" ng-click="onClick()"/><span>Y</span></label></li>
+		                        <li><label class="baseB red" ng-class="{active: param.status == 'N'}">
+		                        	<input type="radio" name="status" value="N" ng-model="param.status" ng-change="onChange()" ng-click="onClick()"/><span>N</span></label></li>
+		                    </ul>
+		                    <div class="line"></div>
+		                    <ul>
+		                        <li ng-if="$parent.classInfo.mark_yn != '1'"><label class="baseS bc" ng-class="{active: param.status == 'BZ'}">
+		                        	<input type="radio" name="status" value="BZ" ng-model="param.status" ng-change="onChange()" ng-click="onClick()"/><span>BZ</span></label></li>
+		                        <li><label class="baseS bc" ng-class="{active: param.status == 'C'}">
+		                        	<input type="radio" name="status" value="C" ng-model="param.status" ng-change="onChange()" ng-click="onClick()"/><span>C</span></label></li>
+		                        <li ng-if="$parent.classInfo.mark_yn != '1'"><label class="baseS bc" ng-class="{active: param.status == 'VA'}">
+		                        	<input type="radio" name="status" value="VA" ng-model="param.status" ng-change="onChange()" ng-click="onClick()"/><span>VA</span></label></li>
+		                        <li><label class="baseS bc" ng-class="{active: param.status == 'L'}">
+		                        	<input type="radio" name="status" value="L" ng-model="param.status" ng-change="onChange()" ng-click="onClick()"/><span>L</span></label></li>
+		                    </ul>
+		                    <input type="radio" name="status" value="" ng-model="param.status" ng-change="onChange()"/>
+		                    <div class="line"></div>
+		                </div>
+		                <!--//listRight-->
+		            </form>
+		            <!--//check_list-->
+				</div>
+			</div>
+
+			<div class="line"></div>
+
+        </div>
+        <!--//class_con-->
+
+    </div>
+    <!--//tab_con-->
+</div>

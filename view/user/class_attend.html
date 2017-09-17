@@ -1,0 +1,9 @@
+		<div class="calendar_area" ng-controller="ClassDetailAttendController">
+			<form name="form_classDetailAttend" class="hidden" action="controller/class_attend.php" method="get" x-action ng-asyncform="auto" param="param">
+				<input type="text" name="regid" ng-model="param.regid"/>
+				<input type="text" name="year" ng-model="param.year"/>
+				<input type="text" name="month" ng-model="param.month"/>
+			</form>
+	        <simple-calendar events="attendlist" options="calendarOptions" legends="['출석','결석','수업예정']"></simple-calendar>
+	    </div>
+	    <!--//calendar_area-->

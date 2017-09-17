@@ -1,0 +1,124 @@
+	<div class="con_12" ng-controller="TutorEvaluationViewController">
+		<form name="form_evaluationView" class="hidden" action="controller/tutor_ev_report.php" ng-asyncform="auto" param="param">
+			<input type="text" name="classid" ng-model="param.classid"/>
+			<input type="text" name="memberseq" ng-model="param.memberseq"/>
+			<input type="text" name="year" ng-model="param.year"/>
+			<input type="text" name="month" ng-model="param.month"/>
+		</form>
+    
+        <div day-selector options="selectorOptions">{{month}} {{year}}</div>
+        <!--//dateArrow-->
+
+        <div class="resultProfile">
+            <ul class="clear-after">
+                <li class="floatLeft pic_area"><span class="img-wrap"><span class="pic_area_inner">
+		        	<img ng-src="{{ev.imgfile}}" class="mask" ng-if="ev.imgfile"/>
+			        <img src="img/pic_man.jpg" ng-if="!ev.imgfile"/>
+		        </span></span></li>
+                <li class="floatLeft">
+                    <dl>
+                        <dt>{{ev.kname}} ({{ev.ename}}) <b>’s<br />Evaluation Result</b></dt>
+                        <dd><b>Evaluator</b>{{ev.ev_ename}}</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <!--//resultProfile-->
+        <div class="report_con">
+            <div ng-class="{'floatArea': (ev.language == 'EN') && (ev.class_eff)}">
+                <dl>
+                    <dt>Ⅰ. Language Competency</dt>
+                    <dd class="mobile-touchable">
+                    	<div id="chart_userClassReport_radar" class="chart" ng-amchart="radar" color="{{color}}" ng-model="ev.lang_comp"></div>
+                    </dd>
+                </dl>
+
+                <dl ng-if="(ev.language == 'EN') && (ev.class_eff)">
+                    <dt>Ⅱ. Class Effort</dt>
+                    <dd class="mobile-touchable">
+                    	<div id="chart_userClassReport_bar" class="chart" ng-amchart="bar" color="{{color}}" ng-model="ev.class_eff"></div>
+                    	<!--<div id="chart_userClassReport_pie" class="chart" ng-amchart="pie" color="{{color}}" ng-model="graphData"></div>-->
+                    </dd>
+                </dl>
+            </div>
+            <!--//floatArea-->
+
+            <dl>
+                <dt>Overall Feedback</dt>
+                <dd><div class="txt" ng-bind-html="ev.overall_feedback"></div></dd>
+            </dl>
+
+            <dl>
+                <dt>Graph Ⅰ. Current Status</dt>
+                <dd class="mobile-touchable">
+                	<div id="chart_userClassReport_barline" class="chart" ng-amchart="barline" color="{{color}}" ng-model="ev.curr_stat"></div>
+                	<div class="chart-legend">
+                		<span class="chart-legend-mark" ng-style="{'background-color': color}"></span> Score
+                		<span class="chart-legend-mark" ng-style="{'background-color': colorLine}"></span> Average
+                	</div>
+                </dd>
+            </dl>
+
+            <dl class="last">
+                <dt>Graph Ⅱ. Accumulative Recording</dt>
+                <dd class="mobile-touchable">
+                	<div id="chart_userClassReport_line" class="chart" ng-amchart="line" color="{{color}}" ng-model="ev.accu_recd"></div>
+                	<div class="chart-legend">
+                		<span class="chart-legend-mark" ng-style="{'background-color': colorL2}"></span> Fluency<br/>
+                		<span class="chart-legend-mark" ng-style="{'background-color': colorL1}"></span> Accuracy<br/>
+                		<span class="chart-legend-mark" ng-style="{'background-color': color}"></span> Listening<br/>
+                		<span class="chart-legend-mark" ng-style="{'background-color': colorD1}"></span> Comprehension<br/>
+                		<span class="chart-legend-mark" ng-style="{'background-color': colorD2}"></span> Attitude
+                	</div>
+                </dd>
+            </dl>
+            
+            <div ng-controller="TutorEvaluationWriteCompleteController">
+            	<div class="btn_text">
+            		<a href="#" ng-back>Cancel</a> &nbsp;
+            		<a href="#/tutor/evwrite/{{param.classid}}/{{param.memberseq}}/{{param.year}}/{{param.month}}">Modify</a> &nbsp;
+            		
+            		<form class="inline" name="form_evaluationWriteComplete" action="controller/tutor_ev_modify_status.php" ng-asyncform="" confirm="{{loc('tutor.ev.write.confirm')}}">
+		            	<div class="hidden">
+		            		<input type="text" name="regid" ng-model="$parent.ev.regid"/>
+		            		<input type="text" name="classid" ng-model="param.classid"/>
+		            		<input type="text" name="memberseq" ng-model="param.memberseq"/>
+		            		<input type="text" name="year" ng-model="param.year"/>
+		            		<input type="text" name="month" ng-model="param.month"/>
+		            		<input type="text" name="status" value="complete"/>
+		            	</div>
+		            	
+	            		<button type="submit">Complete</button>
+		            </form> &nbsp; 
+		            
+		            <form class="inline" name="form_evaluationSendMailToTutor" action="controller/tutor_ev_sendmail.php" ng-asyncform="" confirm="{{loc('tutor.ev.sendmail.confirm')}}">
+		            	<div class="hidden">
+		            		<input type="text" name="regid" ng-model="$parent.ev.regid"/>
+		            		<input type="text" name="classid" ng-model="param.classid"/>
+		            		<input type="text" name="memberseq" ng-model="param.memberseq"/>
+		            		<input type="text" name="year" ng-model="param.year"/>
+		            		<input type="text" name="month" ng-model="param.month"/>
+		            		<input type="text" name="to" value="tutor"/>
+		            	</div>
+		            	
+	            		<button type="submit">to Me</button>
+		            </form> &nbsp; 
+		            
+		            <form class="inline" name="form_evaluationSendMailToTutor" action="controller/tutor_ev_sendmail.php" ng-asyncform="" confirm="{{loc('tutor.ev.sendmail.confirm')}}">
+		            	<div class="hidden">
+		            		<input type="text" name="regid" ng-model="$parent.ev.regid"/>
+		            		<input type="text" name="classid" ng-model="param.classid"/>
+		            		<input type="text" name="memberseq" ng-model="param.memberseq"/>
+		            		<input type="text" name="year" ng-model="param.year"/>
+		            		<input type="text" name="month" ng-model="param.month"/>
+		            		<input type="text" name="to" value="user"/>
+		            	</div>
+		            	
+	            		<button type="submit">to Student</button>
+		            </form>
+            	</div>
+	            
+            </div>
+        </div>
+        <!--//report_con-->
+	</div>

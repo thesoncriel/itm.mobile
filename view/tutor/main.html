@@ -1,0 +1,90 @@
+<div ng-controller="MainController" ng-init="param.quit = (isActive('quitclass'))? 1: 0">
+  	<form name="form_main" class="hidden" action="controller/main.php" method="get" x-action ng-asyncform="auto" param="param">
+  		<input type="text" name="count" ng-model="param.count"/>
+  		<input type="text" name="page" ng-model="param.page"/>
+  		<input type="text" name="quit" ng-model="param.quit"/>
+  	</form>
+  <!--//본문삽입-->
+  	<div class="person_area">
+        <h3 class="pic_area"><span class="pic_area_inner">
+        	<img ng-src="{{member.imgfile}}" class="mask" ng-if="member.imgfile"/>
+	        <img src="img/pic_man.jpg" ng-if="!member.imgfile"/>
+        </span></h3>
+        <div class="info">
+            <h4 class="name">{{member.ename}}</h4>
+            <dl class="fir">
+                <dt>{{classInfo.current_classes}}</dt>
+                <dd>Current Classes</dd>
+            </dl>
+            <dl>
+                <dt>{{classInfo.total_class_completion}}%</dt>
+                <dd>Total class completion</dd>
+            </dl>
+        </div>
+        <!--//info-->
+    </div>
+    <!--//person_area-->
+<!--
+    <div class="person_area">
+        <h3 class="pic_area">
+        	<span class="pic_area_inner"><img src="http://titm.carrotkr.com/html/data/tutorphoto/{{$parent.member.imgfile}}"/></span></h3>
+        <div class="info">
+            <h3 class="name">{{$parent.member.ename}}</h3>
+            <em>{{$parent.member.companyname}}</em>
+        </div>
+    </div>
+-->
+    <!--//person_area-->
+
+    <div class="line"></div>
+
+    <div class="wrap_course_area" infinite-scroll="loadMore()" infinite-scroll-distance="2">
+        <div class="course_area" ng-repeat="item in clist">
+            <dl class="tit">
+                <dt>{{noFmt($index + 1)}}</dt>
+                <dd>Course completion <b>{{item.course_completion}}%</b></dd>
+            </dl>
+            <div class="line"></div>
+
+            <ul class="graphBar point-color-bg-disable">
+                <li><div class="point-color-bg" style="width: {{item.course_completion}}%;"></div></li>
+            </ul>
+
+            <div class="line"></div>
+
+            <div class="info">
+                <div class="info_con">
+                    <dl>
+                        <dt>
+                        	<a ng-href="#/tutor/class/{{item.regid}}/curr">
+                        		{{item.classname}}
+                        		<span class="circle">{{item.classno}}</span>
+                        	</a>
+                        </dt>
+                        <dd>{{item.companyname}}</dd>
+                    </dl>
+                    <ul>
+                        <li class="time">{{dtFmt(item.stimegubun, item.stimehh, item.stimemm)}} ~ {{dtFmt(item.etimegubun, item.etimehh, item.etimemm)}}</li>
+                        <li class="date">
+                        	{{cdaysFmt(item.cdaysmo, item.cdaystu, item.cdayswe, item.cdaysth, item.cdaysfr, item.cdayssa, item.cdayssu)}}
+                        	<a ng-href="#/tutor/classcomm/{{item.boardseq}}/list" class="btn_community">
+                        		Class Community&nbsp; &nbsp;&#62;
+                        	</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--//info_con-->
+            </div>
+            <!--//info-->
+        </div>
+        <div class="course_area text-center" ng-if="clist.length == 0 && !loading">
+        	{{loc('class.list.notexist')}}
+        </div>
+        <!--<div class="_test"></div>
+        <!--//course_area-->
+
+    </div>
+    <!--//wrap_course_area-->
+    </div>
+    <!--// .container -->
+    <!--//본문삽입끝-->

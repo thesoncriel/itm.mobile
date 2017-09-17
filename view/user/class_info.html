@@ -1,0 +1,60 @@
+				<div class="con6">
+					<div class="paper_area" ng-controller="ClassDetailInfoController">
+						<form name="form_classDetailInfo" action="controller/class_info.php" x-action ng-asyncform="auto" data-param="param">
+							<input type="hidden" name="regid" ng-model="param.regid"/>
+						</form>
+	                    <div class="paper_join">
+	                        <div ng-show="info.survey.user_involved == 0"><a ng-href="#/user/survey/{{info.survey.classid}}">만족도 조사 참여하기<img src="img/btn_rightArrow_act.png" alt="참여" /><span>(설문기간: {{info.survey.dtstart}} ~ {{info.survey.dtend}})</span></a></div>
+	                    </div>
+	                    <!--//paper_join-->
+	
+	                    <div class="paper_info">
+	                        <dl class="info_con" ng-if="info.book_name1 || info.book_name2 || info.book_name3">
+	                            <dt>교재보기</dt>
+	                            <dd>
+	                            	<ul>
+	                            		<li ng-if="info.book_name1">
+	                            			{{info.book_name1}} &nbsp; 
+	                            			<a target="itm_book" ng-href="{{info.book_url1}}" class="link-button" ng-if="info.book_url1">View</a>
+	                            		</li>
+	                            		<li ng-if="info.book_name2">
+	                            			{{info.book_name2}} &nbsp; 
+	                            			<a target="itm_book" ng-href="{{info.book_url2}}" class="link-button" ng-if="info.book_url2">View</a>
+	                            		</li>
+	                            		<li ng-if="info.book_name3">
+	                            			{{info.book_name3}} &nbsp; 
+	                            			<a target="itm_book" ng-href="{{info.book_url3}}" class="link-button" ng-if="info.book_url3">View</a>
+	                            		</li>
+	                            	</ul>
+	                            </dd>
+	                        </dl>
+	
+	                        <dl class="info_con">
+	                            <dt>강의실</dt>
+	                            <dd>{{info.classroom}}</dd>
+	                        </dl>
+	
+	                        <p class="info_intro_tit">강사소개</p>
+	                        <div class="info_intro">
+	                            <dl class="lec">
+	                                <dt class="pic_area pic_area_inner">
+	                                	<img ng-src="{{info.tutor.imgfile}}" alt="Student's Picture" class="in-item-picture" ng-if="info.tutor.imgfile"/>
+                    					<img src="img/pic_man.jpg" alt="Student's Picture" class="in-item-picture" ng-if="!info.tutor.imgfile"/>
+	                                </dt>
+	                                <dd>{{info.tutor.ename}}<br /><span class="point-color">{{info.tutor.edulangk}}</span></dd>
+	                            </dl>
+	                            <dl class="intro_con">
+	                                <dt ng-repeat="video in intro_movie">
+	                                	<video class="video" controls>
+	                                		<source src="{{video}}" type="video/mp4"></source>
+	                                	</video>
+	                                </dt>
+	                                <dd>
+	                                	<p>{{info.tutor.intro_text}}</p>
+	                                </dd>
+	                            </dl>
+	                        </div>
+	                    </div>
+	                </div>
+	                <!--//paper_area-->
+                </div>

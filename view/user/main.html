@@ -1,0 +1,89 @@
+<div ng-controller="MainController">
+  	<form name="form_main" class="hidden" action="controller/main.php" method="get" x-action ng-asyncform="auto" param="param" cache>
+  		<input type="text" name="gubun" value="" ng-model="param.gubun"/>
+  		<input type="text" name="count" value="" ng-model="param.count"/>
+  		<input type="text" name="page" value="" ng-model="param.page"/>
+  		<input type="text" name="tutorseq" value="" ng-model="param.tutorseq"/>
+  		<input type="text" name="memberseq" value="" ng-model="param.memberseq"/>
+  		<input type="text" name="quit" value="" ng-model="param.quit"/>
+  	</form>
+  <!--//본문삽입-->
+  	<div class="w_today">
+        <h4>Today English</h4>
+        <p class="today_text" ng-if="todayEnglish">
+            <em class="pull-left fir">{{todayEnglish.title}}</em>
+            <span class="pull-left mid">{{todayEnglish.transtitle}}</span>
+
+            <a ng-href="#/user/todayeng/{{today}}/b" class="pull-left more point-color">more...</a>
+        </p>
+        <p class="today_text" ng-if="!todayEnglish && !loading">
+        	<em class="pull-left fir disable">등록된 내용이 없습니다.</em>
+        </p>
+    </div>
+<!--//m_today-->
+<!--
+    <div class="person_area">
+        <h3 class="pic_area">
+        	<span class="pic_area_inner"><img src="http://titm.carrotkr.com/html/data/tutorphoto/{{$parent.member.imgfile}}"/></span></h3>
+        <div class="info">
+            <h3 class="name">{{$parent.member.ename}}</h3>
+            <em>{{$parent.member.companyname}}</em>
+        </div>
+    </div>
+-->
+    <!--//person_area-->
+
+    <div class="line"></div>
+
+    <div class="wrap_course_area">
+        <div class="course_area" ng-repeat="item in clist">
+            <dl class="tit">
+                <dt>{{noFmt($index + 1)}}</dt>
+                <dd>Course completion <b>{{item.course_completion}}%</b></dd>
+            </dl>
+            <div class="line"></div>
+
+            <ul class="graphBar point-color-bg-disable">
+                <li><div class="point-color-bg" style="width: {{item.course_completion}}%;"></div></li>
+            </ul>
+
+            <div class="line"></div>
+
+            <div class="info">
+                <div class="info_con">
+                    <dl>
+                        <dt>
+                        	<a ng-href="#/user/class/{{item.regid}}/info">
+                        		{{item.classname}}
+                        		<span class="circle">{{item.classno}}</span>
+                        		<span class="point-color-bg-disable" ng-if="item.class_state == 1">수업 예정</span>
+                        		<span class="point-color-bg" ng-if="item.class_state == 2">수업중</span>
+                        		<span class="point-color-bg-disable" ng-if="item.class_state == 3">수업완료</span>
+                        	</a>
+                        </dt>
+                        <dd>{{item.companyname}}</dd>
+                    </dl>
+                    <ul>
+                        <li class="time">{{dtFmt(item.stimegubun, item.stimehh, item.stimemm)}} ~ {{dtFmt(item.etimegubun, item.etimehh, item.etimemm)}}</li>
+                        <li class="date">
+                        	{{cdaysFmt(item.cdaysmo, item.cdaystu, item.cdayswe, item.cdaysth, item.cdaysfr, item.cdayssa, item.cdayssu)}}
+                        	<a ng-href="#/user/classcomm/{{item.boardseq}}/list" class="btn_community" ng-if="item.boardseq > 0">
+                        		Class Community&nbsp; &nbsp;&#62; <span class="circle circle-w18 point-color-bg">{{item.boardcount}}</span>
+                        	</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--//info_con-->
+            </div>
+            <!--//info-->
+        </div>
+        <div class="course_area text-center" ng-if="clist.length == 0 && !loading">
+        	클래스가 존재하지 않습니다.
+        </div>
+        <!--//course_area-->
+
+    </div>
+    <!--//wrap_course_area-->
+    </div>
+    <!--// .container -->
+    <!--//본문삽입끝-->

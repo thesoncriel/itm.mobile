@@ -1,0 +1,31 @@
+			<div ng-controller="ClassCommDetailController as comm" ng-init="classCommModifyAuthMsg=loc('classcomm.update.auth')">
+				<form name="form_classCommDetail" action="controller/classcomm_detail.php" x-action ng-asyncform="auto" param="param">
+					<input type="text" name="classid" class="hidden" ng-model="param.classid"/>
+					<input type="text" name="regid" class="hidden" ng-model="param.regid"/>
+				</form>
+				<div ng-controller="ClassCommModifyController as mod">
+	                    <div class="wrap write">
+	                        <div class="write_top">
+	                            <div>
+	                            	<a href="#/{{type}}/classcomm/{{param.regid}}/list">List</a>
+	                            	<button type="button" class="floatRight" ng-click="onAjaxUpload()"><i class="icon icon-camera"></i></button>
+	                            </div>
+	                            
+	                        </div>
+	                        <!--//write_top-->
+	                        <div class="editor" contenteditable="true" ng-model="param.contents" interval></div>
+	                    </div>
+	                    <!--//write-->
+					<form name="form_classCommModify" action="controller/classcomm_modify.php" method="post" x-action ng-asyncform="" param="param" confirm="{{loc('classcomm.update.confirm')}}">
+						<input type="text" name="classid" class="hidden" ng-model="param.classid"/>
+						<input type="text" name="regid" class="hidden" ng-model="param.regid"/>
+						<input type="text" name="bcode" class="hidden" ng-model="param.bcode"/>
+						<textarea name="contents" class="hidden">{{param.contents}}</textarea>
+	                    <div class="btn_textM">
+	                    	<a href="#" class="link-button" ng-back>Cancel</a> &nbsp; &nbsp;
+	                    	<button type="submit" class="link-button">Write</button>
+	                    </div>
+	                    
+	                </form>
+                </div>
+			</div>

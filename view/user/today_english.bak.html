@@ -1,0 +1,55 @@
+<div ng-controller="TodayEnglishController">
+    <form name="form_todayEnglish" class="hidden" action="controller/today_english.php" method="get" x-action ng-asyncform="">
+    	<input type="hidden" name="date" value="" ng-model="date"/>
+    	<input type="hidden" name="type" value="" ng-model="type"/>
+    </form>
+    <!--내용시작-->
+    <div class="con4">
+        <div class="con4_tit">
+            <p class="date">{{todayEnglish.view_date}}</p>
+            <p class="tit">Today English</p>
+        </div>
+        <!--//con4_tit-->
+
+        <ul class="tab">
+            <li ng-sref-class="on"><a href="#/user/todayeng/{{date}}/b" ng-sref="b">오늘의 비즈니스 영어</a></li>
+            <li ng-sref-class="on"><a href="#/user/todayeng/{{date}}/e" ng-sref="e">오늘의 한마디</a></li>
+        </ul>
+        <!--//tab-->
+
+        <div class="today">
+            <p><button><img src="img/btn_play.gif" alt="Play" width="" height="" /></button></p>
+            <dl>
+                <dt>{{todayEnglish.title}}</dt>
+                <dd>{{todayEnglish.transtitle}}</dd>
+            </dl>
+        </div>
+        <!--//today-->
+
+        <div class="txt">
+            <dl class="exam">
+                <dt>예문</dt>
+                <dd><pre>{{todayEnglish.example}}</pre></dd>
+            </dl>
+            <!--//예문-->
+
+             <dl class="trans">
+                <dt>번역</dt>
+                <dd><pre>{{todayEnglish.transexample}}</pre></dd>
+            </dl>
+            <!--//번역-->
+
+             <dl class="explain">
+                <dt>해설</dt>
+                <dd><pre>{{todayEnglish.content}}</pre></dd>
+            </dl>
+            <!--//해설-->
+        </div>
+        <!--//txt-->
+
+        <h3 class="btn_textP"><button>List</button></h3>
+
+    </div>
+    <!--//내용끝-->
+
+</div>

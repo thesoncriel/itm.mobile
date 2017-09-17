@@ -1,0 +1,45 @@
+				<div class="list" ng-controller="ClassCommListController">
+					<form name="form_classCommList" action="controller/classcomm_list.php" x-action ng-asyncform="auto" data-param="param">
+						<input type="hidden" name="classid" ng-model="param.classid"/>
+						<input type="hidden" name="page" ng-model="param.page"/>
+						<input type="hidden" name="count" ng-model="param.count"/>
+					</form>
+                    <div class="list_top">
+                        <div>{{loc('classcomm.list.count')}} ({{classComm.totalcount}})</div>
+                        <div class="btn-write"><a ng-href="#/{{type}}/classcomm/{{param.regid}}/write/{{$parent.classInfo.boardseq}}"><i class="icon icon-write"></i></a></div>
+                    </div>
+                    <!--//list_top-->
+					<div infinite-scroll="loadMore()" infinite-scroll-distance="2">
+						<div class="list_con" ng-repeat="item in classComm.list">
+	                        <dl class="info">
+	                            <dt class="pic_area">
+	                            	<span class="pic_area_inner">
+	                            		<img ng-src="{{item.writer_imgfile}}" ng-if="item.writer_imgfile != ''"/>
+	                            		<img src="img/pic_man.jpg" ng-if="item.writer_imgfile == ''"/>
+	                            	</span>
+	                            </dt>
+	                            <dd>{{item.engname}}<br /><span class="point-color">{{item.createdate}}</span></dd>
+	                        </dl>
+	                        <!--//info-->
+	
+	                        <p class="content" ng-bind-html="item.contents"></p>
+	
+	                        <div class="list_button">
+	                            <div class="w_button" ng-if="member.email == item.email">
+	                                <div class="inline" ng-controller="ClassCommDeleteController" ng-init="failMsg = 'Fail!'">
+	                                	<var ng-init="citem = item"></var>
+		                            	<form name="form_classCommDelete" action="controller/classcomm_delete.php" x-action ng-asyncform="" data-confirm="{{loc('classcomm.delete.confirm')}}">
+		                            		<input type="text" class="hidden" name="regid" ng-model="item.regid"/>
+		                            		<button type="submit" class="link-button">Delete</button>
+		                            	</form>
+	                            	</div> &nbsp; &nbsp;
+	                                <a class="link-button" ng-href="#/{{type}}/classcomm/{{param.regid}}/modify/{{item.regid}}">Modify</a>
+	                            </div>
+	                            <div class="reply"><span><img src="img/icon_tooltip.png" width="15" height="14" alt="" />{{item.cmtcnt}}</span> · <a ng-href="#/{{type}}/classcomm/{{param.regid}}/detail/{{item.regid}}">Reply</a></div>
+	                        </div>
+	                        <!--//list_button-->
+	                    </div>
+	                    <!--//list_con-->
+					</div>
+                </div>
+                <!--//list-->

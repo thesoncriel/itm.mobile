@@ -1,0 +1,34 @@
+	<div class="con_22" ng-controller="TutorPaymentController">
+		<form class="hidden" name="form_tutorPayment" action="controller/tutor_monthpay.php" ng-asyncform="auto" param="param">
+			<input type="text" name="tutorseq" ng-model="param.tutorseq"/>
+			<input type="text" name="year" ng-model="param.year"/>
+			<input type="text" name="month" ng-model="param.month"/>
+		</form>
+        <div day-selector options="selectorOptions">{{month}} {{year}}</div>
+        <!--//dateArrow-->
+
+        <div class="total">
+            <p>The number of times of total class<b class="currency point-color">{{payment.total_time}}</b><br />
+            Total payment<b class="currency point-color">{{payment.total_payment | currency : "&#xffe6; " : 0}}</b></p>
+        </div>
+        <!--//total-->
+
+        <div class="pay_list">
+            <div class="payment" ng-repeat="item in payment.list">
+                <ul class="tit">
+                    <li class="sTit">{{item.companyname}}</li>
+                    <li class="bTit">{{item.classname}} ({{cdaysFmt(item.cdaysmo, item.cdaystu, item.cdayswe, item.cdaysth, item.cdaysfr, item.cdayssa, item.cdayssu, ", ")}} / {{dtFmt(item.stimegubun, item.stimehh, item.stimemm)}} ~ {{dtFmt(item.etimegubun, item.etimehh, item.etimemm)}}) - {{item.classmanager_ename}}({{item.classmanager_kname}})</li>
+                </ul>
+                <dl>
+                    <dt>Rate</dt>
+                    <dd>{{item.rate | currency : "" : 0}} ({{item.count}})</dd>
+                    <div class="line"></div>
+                    <dt>Payment</dt>
+                    <dd class="currency point-color">{{item.payment | currency : "&#xffe6; " : 0}}</dd>
+                </dl>
+            </div>
+            <!--//payment-->
+        </div>
+        <!--//pay_list-->
+    </div>
+    <!--//con_22-->

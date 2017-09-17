@@ -1,0 +1,66 @@
+<div class="con_5" ng-controller="TutorClassDetailCurrController">
+	<div class="tab_con">
+        <div class="class_con">
+            
+            <!--<day-selector options="selectorOptions">{{weekday}}, {{day}} {{month}}</day-selector>-->
+        
+            <div day-selector options="selectorOptions">{{year}}, {{weekno}} weeks</div>
+
+            <div class="line"></div>
+
+            <form name="form_classDetailCurr" class="hidden" action="controller/tutor_class_attendlist.php" method="get" ng-asyncform="auto" param="param">
+                <input type="text" name="regid" value="" ng-model="param.regid"/>
+                <input type="text" name="datestart" value="" ng-model="param.datestart"/>
+            </form>
+
+            <div class="wrap_class_info">
+                <div class="class_info" ng-repeat="item in attendlist">
+                    <div class="infoList">
+                    	<div>
+                    		<img ng-src="{{item.memberimg}}" alt="Student's Picture" class="in-item-picture" ng-if="item.memberimg != ''"/>
+                    		<img src="img/pic_man.jpg" alt="Student's Picture" class="in-item-picture" ng-if="item.memberimg == ''"/>
+                            <strong class="in-item-name">{{item.membername}}</strong>
+                    	</div>
+                        <dl class="dl-horizontal attend-list">
+                        	<dt ng-if="0" ng-repeat-start="attd in item.list"></dt>
+                            <dt ng-if="attd.status">{{removeYear(attd.date, '/')}} ({{extWeekName(attd.date, 2)}})</dt>
+                            <dd ng-class="{alert: attd.status == 'N'}">{{attd.status}}</dd>
+                            <dd ng-if="0" ng-repeat-end></dd>
+                        </dl>
+                    </div>
+                    <!--//infoList-->
+
+                    <div class="infoGraph" ng-if="item.hasChartData == true">
+                        <div class="graphPic">
+                            <div id="chart_attdPie{{$index}}" ng-amchart="pie" ng-model="item.chartData" color="{{colorList}}" color-dist="0.1" style="width: 120px; height: 120px;"></div>
+                        </div>
+                        <div class="chart-legend">
+                        	<span class="chart-legend-mark cute" style="background-color: {{color1}}"></span> <span class="chart-legend-label">Y</span>
+                        	<span class="chart-legend-mark cute" style="background-color: {{color2}}"></span> <span class="chart-legend-label">N</span>
+                        	<span class="chart-legend-mark cute" style="background-color: {{color3}}"></span> <span class="chart-legend-label">BZ</span>
+                        	<span class="chart-legend-mark cute" style="background-color: {{color4}}"></span> <span class="chart-legend-label">VA</span>
+                        	<span class="chart-legend-mark cute" style="background-color: {{color5}}"></span> <span class="chart-legend-label">C</span>
+                        	<span class="chart-legend-mark cute" style="background-color: {{color6}}"></span> <span class="chart-legend-label">L</span>
+                        </div>
+                        
+                        <a ng-if="item.evregid == 0" ng-href="#/tutor/evwrite/{{classid}}/{{item.memberseq}}/{{year}}/{{month}}" class="btn write-ev">Write EV</a>
+                        <a ng-if="item.evregid > 0" ng-href="#/tutor/evview/{{classid}}/{{item.memberseq}}/{{year}}/{{month}}" class="btn write-ev view">View EV</a>
+                    </div>
+                    <div class="infoGraph" ng-if="item.hasChartData == false">
+                    	출결 현황이 존재하지 않습니다.
+                    </div>
+                    <!--//infoGraph-->
+
+                    <div class="line"></div>
+
+                </div>
+                <!--//class_info-->
+            </div>
+            <!--//wrap_class_info-->
+
+        </div>
+        <!--//class_con-->
+
+    </div>
+    <!--//tab_con-->
+</div>

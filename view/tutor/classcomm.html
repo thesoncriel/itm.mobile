@@ -1,0 +1,21 @@
+<!--내용시작-->
+            <div class="con8" ng-controller="ClassDetailController">
+				<form name="form_classDetail" action="controller/class_detail.php" method="get" ng-asyncform="auto" data-param="param">
+					<input type="hidden" name="regid" ng-model="param.regid"/>
+				</form>
+                <div class="con8_tit">
+                    <h2 class="mTit">{{classInfo.companyname}}</h2>
+                    <h3 class="tit">{{classInfo.classname}}</h3>
+                    <ul>
+                        <li class="time">{{dtFmt(classInfo.stimegubun, classInfo.stimehh, classInfo.stimemm)}} ~ {{dtFmt(classInfo.etimegubun, classInfo.etimehh, classInfo.etimemm)}}</li>
+                        <li class="date"><span class="mobile-hide">주 {{cdaysCount(classInfo.cdaysmo, classInfo.cdaystu, classInfo.cdayswe, classInfo.cdaysth, classInfo.cdaysfr, classInfo.cdayssa, classInfo.cdayssu)}}회</span> ({{cdaysFmt(classInfo.cdaysmo, classInfo.cdaystu, classInfo.cdayswe, classInfo.cdaysth, classInfo.cdaysfr, classInfo.cdayssa, classInfo.cdayssu)}})</li>
+                    </ul>
+                </div>
+                <!--//con8_tit-->
+
+                <div id="uiView_classComm" ui-view data-autoscroll="false" data-ng-class="mainViewAnimation" class=""></div>
+
+                <div class="btn_textP"><a href="#/tutor/classcomm/{{param.regid}}/list">List</a></div>
+
+            </div>
+            <!--//내용끝-->

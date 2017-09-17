@@ -1,0 +1,120 @@
+				<div class="con7 report_area" ng-controller="ClassDetailReportController" ng-init="colorDist=0.15">
+					<form name="form_classDetailReport" action="controller/class_report.php" method="get" x-action ng-asyncform="auto" data-param="param">
+						<input type="hidden" name="regid" ng-model="param.regid"/>
+						<input type="hidden" name="year_month" ng-model="param.year_month"/>
+					</form>
+					<simple-calendar options="calendarOptions"></simple-calendar>
+                    <!--//month-->
+
+                    <div class="report_info" ng-if="hasReport">
+                        <dl class="left">
+                            <dt>Name</dt>
+                            <dd>{{report.name}}</dd>
+                        </dl>
+                        <dl class="right">
+                            <dt>Evaluator</dt>
+                            <dd>{{report.evaluator}}</dd>
+                        </dl>
+                        <dl class="left">
+                            <dt>Result</dt>
+                            <dd><b class="point-color">{{report.result_curr}}</b> / {{report.result_goal}}<img src="img/icon_i.gif" class="level_i" alt="" /></dd>
+                        </dl>
+                        <dl class="level right">
+                            <dt>Level</dt>
+                            <dd>
+                            	<span class="level-label">{{report.level}}</span>
+                            	<div class="progress-label mobile-hide">
+	                            	<div class="progress-bar point-color-bg-disable">
+	                            		<span class="progress point-color-bg" ng-class="report.level"></span>
+	                            		<img src="img/bg-level_progress_579x19_trans.png" class="progress-mask level-progress"/>
+	                            	</div>
+	                            	<span class="progress-label-bottom">
+			                    		<span>L1</span>
+			                    		<span>L2</span>
+			                    		<span>L3</span>
+			                    		<span>L4</span>
+			                    		<span>L5</span>
+			                    		<span>L6</span>
+			                    		<span>L7</span>
+			                    	</span>
+                            	</div>
+                            </dd>
+                        </dl>
+                        <div class="progress-label desktop-hide">
+	                        <div class="progress-bar point-color-bg-disable">
+	                    		<span class="progress point-color-bg" ng-class="report.level"></span>
+	                    		<img src="img/bg-level_progress_579x19_trans.png" class="progress-mask level-progress"/>
+	                    	</div>
+	                    	<span class="progress-label-bottom">
+	                    		<span>L1</span>
+	                    		<span>L2</span>
+	                    		<span>L3</span>
+	                    		<span>L4</span>
+	                    		<span>L5</span>
+	                    		<span>L6</span>
+	                    		<span>L7</span>
+	                    	</span>
+                    	</div>
+                    </div>
+                    <!--//report_info-->
+
+                    <div class="report_con" ng-if="hasReport">
+                        <div class="" ng-class="{'floatArea': report.language == 'EN'}">
+                            <dl>
+                                <dt>Ⅰ. Language Competency</dt>
+                                <dd>
+                                	<div id="chart_userClassReport_radar" class="chart" ng-amchart="radar" color="{{color}}" ng-model="report.lang_comp"></div>
+                                </dd>
+                            </dl>
+
+                            <dl ng-if="report.language == 'EN'">
+                                <dt>Ⅱ. Class Effort</dt>
+                                <dd>
+                                	<div id="chart_userClassReport_bar" class="chart" ng-amchart="bar" color="{{color}}" ng-model="report.class_eff"></div>
+                                	<!--<div id="chart_userClassReport_pie" class="chart" ng-amchart="pie" color="{{color}}" ng-model="graphData"></div>-->
+                                </dd>
+                            </dl>
+                        </div>
+                        <!--//floatArea-->
+
+                        <dl>
+                            <dt>Overall Feedback</dt>
+                            <dd><pre class="txt">{{report.overall_feedback}}</pre></dd>
+                        </dl>
+
+                        <dl>
+                            <dt>Graph Ⅰ. Current Status</dt>
+                            <dd>
+                            	<div id="chart_userClassReport_barline" class="chart" ng-amchart="barline" color="{{color}}" ng-model="report.curr_stat"></div>
+                            	<div class="chart-legend">
+                            		<span class="chart-legend-mark" ng-style="{'background-color': colorLine}"></span> Average<br/>
+                            		<b>Score</b><br/>
+                            		<span ng-repeat="item in report.curr_stat">
+                            			<span class="chart-legend-mark" ng-style="{'background-color': item.color}"></span> {{item.category}}<br/>
+                            		</span>
+                            	</div>
+                            </dd>
+                        </dl>
+
+                        <dl class="last">
+                            <dt>Graph Ⅱ. Accumulative Recording</dt>
+                            <dd>
+                            	<div id="chart_userClassReport_line" class="chart" ng-amchart="line" color="{{color}}" color-dist="{{colorDist}}" ng-model="report.accu_recd"></div>
+                            	<div class="chart-legend">
+                            		<span ng-repeat="item in report.curr_stat">
+                            			<span class="chart-legend-mark" ng-style="{'background-color': item.color}"></span> {{item.category}}<br/>
+                            		</span>
+                            	</div>
+                            </dd>
+                        </dl>
+                        
+                        
+                        
+                    </div>
+                    <!--//report_con-->
+                    <div class="report_con text-center" ng-if="!hasReport">
+                    	평가 내용이 존재하지 않습니다.
+                    </div>
+
+                </div>
+                <!--//report_area-->

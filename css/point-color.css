@@ -1,0 +1,204 @@
+/*
+ Point-Color 기능
+ - 고정 포인트 컬러는 'green' 이다. 바꾸려면 이를 찾아서 바꾸도록 하자.
+ - 각 테마별로 쓰이는 달력의 포인트 컬러를 되살리고 싶다면 아래에 보이는 주석을 제거 하면 된다.
+ * */
+
+/* 포인트 컬러 [시작] */
+/*공통*/
+.point-color-disable{
+	color: #ebebeb;
+}
+.point-color-bg-ready{
+	background-color: none;
+}
+.point-color-bg-disable{
+	background-color: #ebebeb;
+}
+.point-color-group .btn{
+	background-color: #ebebeb;
+}
+.chk-group .chk{
+	background-color: #ebebeb;
+}
+
+/* 포인트 컬러 [종료] */
+
+/* 포인트 컬러 - 달력 (Calendar) [시작] */
+.simple-calendar .day.default{
+/* 기본(오늘) 하늘색 bg를 변경할 때 여기를 수정. */
+}
+.simple-calendar .day.event .status1{
+	color: #fff;
+	background-color: #ff3939;
+}
+.simple-calendar .day.event .status2{
+	background-color: #ebebeb;
+}
+
+.simple-calendar .legend-item.status1::before{
+	background-color: #ff3939;
+}
+.simple-calendar .legend-item.status2::before{
+	background-color: #ebebeb;
+}
+.alt1 .day.event .status0{
+	background: none;
+	color: inherit;
+}
+.alt1 .day.default{
+	background: none;
+}
+.day.default>.day-number{
+	color: inherit;
+	background: none;
+}
+
+/*포인트 컬러 (기본값-녹색)*/
+.simple-calendar .day.default>.day-number{
+	color: #fff;
+	background-color: blue;
+}
+.simple-calendar .day.event .status0{
+	color: #fff;
+	background-color: #0070c8;
+}
+.simple-calendar .legend-item.status0::before{
+	background-color: #0070c8;
+}
+.simple-calendar .day.active>.day-number{
+	color: #fff;
+	background-color: green;
+}
+
+.alt1 .day.event .status0,
+.alt1 .day.event .status1{
+	color: inherit;
+	background: none;
+}
+.alt1 .day.event .status0::before{
+	background-color: green;
+}
+.alt1 .day.event .status1::before{
+	background-color: #B23737;
+}
+.alt1 .day.default>.day-number{
+	color: #fff;
+	background-color: limegreen;
+}
+.alt1 .day.active>.day-number{
+	color: #fff;
+	background-color: green;
+}
+
+/* 포인트 컬러 - 달력 (Calendar) [종료] */
+
+
+
+/*민트*/
+/*default*/
+.mint .point-color{
+	color: #38c9aa;
+	border-color: #38c9aa;
+}
+.mint .point-color-bg,
+.mint .point-color-bg-ready.active{
+	background-color: #38c9aa;
+	color: #fff;
+}
+.mint .point-color-group .btn.active{
+	background-color: #38c9aa;
+	color: #fff;
+}
+.mint .chk-group .chk.active{
+	background-color: #38c9aa;
+}
+.mint .active,
+.mint .active a,
+.mint a.active{
+	color: #38c9aa;
+}
+.mint .point-color-bg.mobile{
+	background-color: inherit;
+	color: inherit;
+}
+@media screen and (max-width: 960px){
+.mint .point-color-bg.mobile{
+	background-color: #38c9aa;
+	color: #fff;
+}
+}/*@media screen and (max-width: 960px){*/
+
+/*calendar - 사용할 거면 활성화
+.mint .day.default>.day-number{
+	color: #fff;
+	background-color: #38c9aa;
+}
+.mint .simple-calendar .day.event .status0{
+	color: #fff;
+	background-color: #38c9aa;
+}
+.mint .simple-calendar .legend-item.status0::before{
+	background-color: #38c9aa;
+}
+.mint .alt1 .day.event .status0::before{
+	background-color: #38c9aa;
+}
+.mint .alt1 .day.active>.day-number{
+	color: #fff;
+	background-color: #38c9aa;
+}
+*/
+
+/*밝은파랑*/
+/*default*/
+.lightblue .point-color{
+	color: #45b9e6;
+	border-color: #45b9e6;
+}
+.lightblue .point-color-bg,
+.lightblue .point-color-bg-ready.active{
+	background-color: #45b9e6;
+	color: #fff;
+}
+.lightblue .point-color-group .btn.active{
+	background-color: #45b9e6;
+	color: #fff;
+}
+.lightblue .chk-group .chk.active{
+	background-color: #45b9e6;
+}
+.lightblue .active,
+.lightblue .active a,
+.lightblue a.active{
+	color: #45b9e6;
+}
+.lightblue .point-color-bg.mobile{
+	background-color: inherit;
+	color: inherit;
+}
+@media screen and (max-width: 960px){
+.lightblue .point-color-bg.mobile{
+	background-color: #45b9e6;
+	color: #fff;
+}
+}/*@media screen and (max-width: 960px){*/
+/*calendar - 사용할 거면 활성화
+.lightblue .day.default>.day-number{
+	color: #fff;
+	background-color: #45b9e6;
+}
+.lightblue .simple-calendar .day.event .status0{
+	color: #fff;
+	background-color: #45b9e6;
+}
+.lightblue .simple-calendar .legend-item.status0::before{
+	background-color: #45b9e6;
+}
+.lightblue .alt1 .day.event .status0::before{
+	background-color: #45b9e6;
+}
+.lightblue .alt1 .day.active>.day-number{
+	color: #fff;
+	background-color: #45b9e6;
+}*/

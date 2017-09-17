@@ -1,0 +1,33 @@
+<div class="body_con2" ng-controller="LoginController">
+<div id="wrap">
+
+    <!--내용시작-->
+    <div class="con2">
+        <div class="con2_box">
+            <h1 class="point-color">ITM</h1>
+
+            <form name="form_login" action="controller/login.php" method="post" ng-init="invalidMsg='아이디 혹은 비밀번호가 유효하지 않습니다'" novalidate ng-asyncform manual>
+                <div class="input_area">
+                    <div class="form-group"><label>ID (e-Mail)</label><input type="text" name="uid" required ng-model="uid" ng-minlength="4"/></div>
+                    <div class="form-group"><label>Password</label><input type="password" name="upass" required ng-model="upass" ng-minlength="4"/></div>
+                </div>
+                <!--//input_area-->
+
+                <div class="search"><button type="submit" class="point-color-bg">Login</button></div>
+            </form>
+
+            <div class="button_forget">
+                <a href="#/idsearch">Forget your ID?</a>
+                <a href="#/pwsearch">Forget your password?</a>
+            </div>
+            <!--//button_forget-->
+        </div>
+        <!--//con2_box-->
+
+        <div class="copyright"><small>Copyright ⓒ CARROT Global Inc. All Right Reseved.</small></div>
+    </div>
+    <!--//내용끝-->
+
+</div>
+<!--//wrap sidy-->
+</div>

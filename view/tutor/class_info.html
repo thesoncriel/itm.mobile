@@ -1,0 +1,84 @@
+	<div class="con_8" ng-controller="TutorClassDetailMoreInfoController">
+		<form name="form_classDetailMoreInfo" class="hidden" action="controller/tutor_class_moreinfo.php" ng-asyncform="auto" param="param">
+			<input type="text" name="classid" ng-model="param.classid"/>
+		</form>
+		<div class="tab_con">
+            <div class="more_info">
+                <div class="infoTop">
+                    <div class="floatLeft">
+                        <ul>
+                            <li class="moreTit">Class Type</li>
+                            <li class="moreCon">{{info.type}}</li>
+                            <li class="desc" ng-if="info.type_desc">({{info.type_desc}})</li>
+                        </ul>
+                    </div>
+                    <div class="floatLeft">
+                        <ul>
+                            <li class="moreTit">Session</li>
+                            <li class="moreCon">{{info.session}}</li>
+                            <li class="desc"></li>
+                        </ul>
+                    </div>
+                    <div class="floatLeft brNone">
+                        <ul>
+                            <li class="moreTit">Class Level</li>
+                            <li class="moreCon">{{info.level}}</li>
+                            <li class="desc" ng-if="info.level_desc">({{info.level_desc}})</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--//infoTop-->
+
+                <div class="line"></div>
+
+                <div class="infoList">
+                    <dl>
+                        <dt>Class Location</dt>
+                        <dd>{{info.location}}</dd>
+                    </dl>
+                    <dl ng-if="info.book_name1 || info.book_name2 || info.book_name3">
+                        <dt>Class Material</dt>
+                        <dd>
+                        	<ul>
+                        		<li ng-if="info.book_name1">
+                        			{{info.book_name1}} &nbsp; 
+                        			<a target="itm_book" ng-href="{{info.book_url1}}" class="link-button" ng-if="info.book_url1">View</a>
+                        		</li>
+                        		<li ng-if="info.book_name2">
+                        			{{info.book_name2}} &nbsp; 
+                        			<a target="itm_book" ng-href="{{info.book_url2}}" class="link-button" ng-if="info.book_url2">View</a>
+                        		</li>
+                        		<li ng-if="info.book_name3">
+                        			{{info.book_name3}} &nbsp; 
+                        			<a target="itm_book" ng-href="{{info.book_url3}}" class="link-button" ng-if="info.book_url3">View</a>
+                        		</li>
+                        	</ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>Class Rate</dt>
+                        <dd>{{numberFormat(info.rate)}}</dd>
+                    </dl>
+                    <!--<dl>
+                        <dt>Lesson Plan(Syllabus)</dt>
+                        <dd>
+                        	<a ng-href="info.plan_view" class="link-button">View</a> &nbsp; 
+                        	<a ng-href="info.plan_write" class="link-button">Write/Revise</a>
+                        </dd>
+                    </dl>-->
+                    <dl class="last">
+                        <dt>HQ Manager</dt>
+                        <dd>
+                        	<span ng-bind="info.hqmanager_ename"></span>
+	                        (<span ng-bind="info.hqmanager_kname"></span>)
+	                         / <span ng-bind="info.hqmanager_phone"></span>
+						</dd>
+                    </dl>
+                </div>
+
+            </div>
+            <!--//more_info-->
+        
+        </div>
+        <!--//tab_con-->
+    </div>

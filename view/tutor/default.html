@@ -1,0 +1,58 @@
+<div ng-controller="ItmController" ng-init="invalidMsg = 'Tutor Only!'">
+	<div class="container-wrapper">
+	    <!--왼쪽메뉴-->
+	    <form name="form_memberInfo" action="controller/member_info.php" method="get" ng-asyncform=""></form>
+	    <div data-position="left" data-size="80%" data-fx="reveal" class="sidy__panel" id="sidenav">
+	        <div class="menuTop point-color-bg mobile">
+	            <ul>
+	                <li class="pic_area">
+	                	<span class="pic_area_inner">
+	                		<img ng-src="{{member.imgfile}}" class="mask" ng-if="member.imgfile"/>
+	                		<img src="img/pic_man.jpg" ng-if="!member.imgfile"/>
+	                	</span>
+	                </li>
+	                <li class="name"><span>{{member.ename}}</span></li>
+	            </ul>
+	        </div>
+	
+	        <div class="nav" ng-click="onNavClick()">
+	             <ul>
+	                <li><a href="#/tutor/main" ng-class="{active: isActive('tutor/main', 'tutor/class/', 'evview', 'evwrite')}" class="nav1">Current Classes</a></li>
+	                <li><a href="#/tutor/quitclass" ng-class="{active: isActive('tutor/quitclass')}" class="nav2">Quit Classes</a></li>
+	                <li><a href="#/tutor/schedule" ng-class="{active: isActive('tutor/schedule')}" class="nav3">My Schedule</a></li>
+	                <li><a href="#/tutor/appstatus" ng-class="{active: isActive('tutor/appstatus')}" class="nav4">My Application Status</a></li>
+	                <li><a href="#/tutor/jobpos" ng-class="{active: isActive('tutor/jobpos')}" class="nav5">Job Positions A.V</a></li>
+	                <li><a href="#/tutor/monthpay" ng-class="{active: isActive('tutor/monthpay')}" class="nav6">Monthly Payment</a></li>
+	                <li><a href="#/tutor/statepay" ng-class="{active: isActive('tutor/statepay')}" class="nav7">Statement of Payment</a></li>
+	                <li><a href="#/tutor/ranking" ng-class="{active: isActive('ranking', 'tutor/modify')}" class="nav8">Setting</a></li>
+	             </ul>
+	        </div><!--//nav-->
+			
+			<form name="form_logout" action="controller/logout.php" class="btn_logout" ng-controller="LogoutController" x-action ng-asyncform confirm="{{loc('logout.confirm')}}">
+	        	<button type="submit" class="btn-nav-bottom">Logout</button>
+	        </form>
+	    </div>
+	    <!--//왼쪽메뉴-->
+	
+	
+		<div class="main-wrapper slide-right-ani">
+		    <div id="header" class="point-color-bg">
+		        <h1>ITM</h1>
+		        <form name="form_logout" action="controller/logout.php" class="logout-wrap" ng-controller="LogoutController" x-action ng-asyncform confirm="{{loc('logout.confirm')}}" manual>
+		        	<button type="submit">Logout &nbsp; <i class="icon-logout"></i></button>
+		        </form>
+	            <button data-panel="panel-2" class="sidy--to-open m-sidenav" ng-click="openNav()"><img src="img/btn_my.gif" alt="확장메뉴열기" width="19" height="19" /></button>
+		    </div>
+	    <!--//header-->
+	 
+	        
+			<!--<div class="main-wrapper-overay"></div>-->
+			<div id="uiView_main" ui-view data-autoscroll="false" data-ng-class="mainViewAnimation" class="container"></div>
+			<div id="overlay_main" class="overlay" ng-click="closeNav()"></div>
+			
+		</div><!--main-wrapper-->
+	</div>
+	<iframe id="frame_ajaxupload" class="ajaxupload" src="/common/m_file_upload.php"></iframe>
+	<iframe id="frame_ajaxupload_photo" class="ajaxupload" src="/common/m_photo_upload.php"></iframe>
+</div>
+<!--//sidy-->

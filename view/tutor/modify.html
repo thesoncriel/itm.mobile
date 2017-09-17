@@ -1,0 +1,33 @@
+<div class="con_25" ng-controller="MemberModifyController" ng-init="invalidMsg = loc('input.invalid'); passNotEqualMsg = loc('member.modify.passnotequal')">
+	<form name="form_memberModify" action="controller/member_modify.php" method="post" autocomplete="off" ng-asyncform="" confirm="{{loc('member.modify.confirm')}}">
+		<input type="text" class="hidden" name="uid" ng-model="param.uid"/>
+         <div class="con_25_tit">
+            <h2>Change Password</h2>
+            <p class="desc">
+               Password must be changed once a month.<br />
+               Can’t register same password as current password.
+            </p>
+        </div>
+        <!--//con_25_tit-->
+
+        <div class="change_pw">
+            <dl>
+                <dt>Current Password </dt>
+                <dd><input type="password" name="upass" ng-model="param.upass" required="required"  /></dd>
+            </dl>
+            <dl>
+                <dt>New Password</dt>
+                <dd><input type="password" name="upassnew" ng-model="param.upassnew" required="required" /></dd>
+            </dl>
+            <dl>
+                <dt>Confirm New Password</dt>
+                <dd><input type="password" name="upassnewre" ng-model="param.upassnewre" required="required" /></dd>
+            </dl>
+        </div>
+        <!--//change_pw-->
+
+        <div class="btn_text"><a href="#" class="link-button" ng-back>Cancel</a> &nbsp; &nbsp; <button type="submit" class="link-button">Save</button></div>
+
+    </form>
+    <!--//con_25-->
+</div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>{{title}}</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<style type="text/css">
+.hide{
+	display: none;
+}
+		</style>
+		<script src=""></script>
+	</head>
+	<body>
+		<strong>{{montheng}} {{year}}</strong>
+		<h1>{{kname}} ({{ename}}) 's Evaluation Result</h1>
+		<em><b>Evaluator</b> {{ev_ename}}</em>
+		
+		<div>
+			<h2>I. Language Competency</h2>
+			<table>
+				<tbody>
+					<tr>
+						<th>{{fluency}}</th>
+						<td>{{langcomp_flue}}</td>
+					</tr>
+					<tr>
+						<th>{{accuracy}}</th>
+						<td>{{langcomp_accu}}</td>
+					</tr>
+					<tr>
+						<th>{{pronunciation}}</th>
+						<td>{{langcomp_pron}}</td>
+					</tr>
+					<tr>
+						<th>{{comprehension}}</th>
+						<td>{{langcomp_comp}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="{{classeff_hide}}">
+			<h2>II. Class Effort</h2>
+			<table>
+				<tbody>
+					<tr>
+						<th>{{pronunciation}}</th>
+						<td>{{classeff_pron}}</td>
+					</tr>
+					<tr>
+						<th>{{comprehension}}</th>
+						<td>{{classeff_comp}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div>
+			<h2>Overall Feedback</h2>
+			<p>
+				{{overall_feedback}}
+			</p>
+		</div>
+		
+		<div>
+			<small>&copy; Carrot Global co.Ltd</small>
+		</div>
+	</body>
+</html>

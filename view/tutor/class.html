@@ -1,0 +1,51 @@
+<!--내용시작-->
+<div class="con5 tutor" ng-controller="ClassDetailController">
+	<form name="form_classDetail" action="controller/class_detail.php" x-action ng-asyncform="auto" data-param="param">
+		<input type="hidden" name="regid" ng-model="param.regid"/>
+	</form>
+    <div class="con5_tit">
+        <h2 class="mTit">{{classInfo.companyname}}</h2>
+        <h3 class="tit">{{classInfo.classname}}</h3>
+    </div>
+    <!--//con5_tit-->
+ 
+    <div class="info">
+        <dl>
+            <dd class="infoList">
+                <ul>
+                    <li class="time ng-binding"> {{dtFmt(classInfo.stimegubun, classInfo.stimehh, classInfo.stimemm)}} ~ {{dtFmt(classInfo.etimegubun, classInfo.etimehh, classInfo.etimemm)}}</li>
+                    <li class="date ng-binding">{{cdaysFmt(classInfo.cdaysmo, classInfo.cdaystu, classInfo.cdayswe, classInfo.cdaysth, classInfo.cdaysfr, classInfo.cdayssa, classInfo.cdayssu)}}</li>
+                    <li class="com"> <a ng-href="#/tutor/classcomm/{{param.regid}}/list" ng-if="classInfo.boardseq > 0">Class Community &#62;</a></li>
+                </ul>
+            </dd>
+			<dd>
+            	<div class="attend-rate">
+                	<div id="chart_userClassReport_attendRate" class="chart chart-full-height chart-absolute" ng-amchart="circprog" color="{{color}}" ng-model="classInfo.attend_rate">
+                		
+                	</div>{{classInfo.attend_rate}}%
+                	<br /><span class="rate">Attendance</span>
+                </div>
+            </dd>
+        <dd class="cour_com">
+         <div class="lecture-progress">
+	        <div class="lecture-progress-label">Course completion<span class="lecture-progress-status">{{classInfo.course_completion}}%</span></div>
+	        <div class="graphBar"><div class="point-color-bg" style="width:{{classInfo.course_completion}}%;"></div></div>
+	    </div>
+		</dd>
+	</dl>
+    </div>
+    <!--//info-->
+
+    <ul class="tab">
+        <li class="tab1"><a ng-href="#/tutor/class/{{param.regid}}/curr" ng-class="{active: tab == 'curr'}">Class 현황</a></li>
+        <li><a ng-href="#/tutor/class/{{param.regid}}/attend" ng-class="{active: tab == 'attend'}">출석 입력</a></li>
+        <li class="tab3"><a ng-href="#/tutor/class/{{param.regid}}/today" ng-class="{active: tab == 'today'}">Today’s Lesson</a></li>
+        <li><a ng-href="#/tutor/class/{{param.regid}}/info" ng-class="{active: tab == 'info'}">More info</a></li>
+    </ul>
+    <!--//tab-->
+	<div>
+		<div id="uiView_classDetail" ui-view data-autoscroll="false" data-ng-class="mainViewAnimation" class=""></div>
+	    <div class="btn_textP"><a href="#/tutor/main">List</a></div>
+	</div>
+</div>
+<!--//내용끝-->

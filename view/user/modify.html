@@ -1,0 +1,58 @@
+<!--내용시작-->
+        <div class="con13" ng-controller="MemberModifyController" ng-init="invalidMsg = loc('input.invalid'); passNotEqualMsg = loc('member.modify.passnotequal')">
+            <h2 class="con13_tit">나의 정보 수정</h2>
+            <div>	
+                <div class="info">
+                    <h3 class="tit">Login Info</h3>
+                    <dl>
+                        <dt class="pic_area">
+                        	<img ng-src="{{member.imgfile}}" class="mask" ng-if="member.imgfile"/>
+	                		<img src="img/pic_man.jpg" class="mask" ng-if="!member.imgfile"/>
+                        </dt>
+                        <dd>
+                            <p class="name">{{member.kname}}</p>
+                            <p class="company">{{member.companyname}}</p>
+                            <p class="course point-color"></p>
+                        </dd>
+                    </dl>
+                    <div ng-controller="MemberModifyImgfileController">
+                    	<form name="form_memberModifyImgfile" action="controller/member_modify_imgfile.php" class="file_wrap" method="post" ng-asyncform param="param">
+	                    	<div class="hidden">
+	                    		<input type="text" name="memberseq" ng-model="param.memberseq"/>
+	                    		<input type="text" name="imgfile" ng-model="param.imgfile"/>
+	                    	</div>
+	                        <button type="submit" class="picture-upload">사진 올리기</button>
+	                    </form>
+                    </div>
+                    
+                </div>
+                <!--//info-->
+            </div>
+			<form name="form_memberModify" action="controller/member_modify.php" method="post" autocomplete="off" ng-asyncform="" param="param" confirm="{{loc('member.modify.confirm')}}">
+            	<input type="text" class="hidden" name="uid" ng-model="param.uid"/>
+                <div class="change_pw">
+                    <h3 class="tit">패스워드 변경</h3>
+                    <dl>
+                        <dt>Password</dt>
+                        <dd>
+                            <input type="password" name="upass" ng-model="param.upass" required="required" placeholder="Password를 입력해주세요">
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>New Password</dt>
+                        <dd><input type="password" name="upassnew" ng-model="param.upassnew" required="required" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>Confirm new password</dt>
+                        <dd><input type="password" name="upassnewre" ng-model="param.upassnewre" required="required" /></dd>
+                    </dl>
+                </div>
+                <!--//change_pw-->
+
+                <div class="btn_text">
+                	<a href="#" class="link-button" ng-back>Cancel</a> &nbsp; 
+                	<button type="submit" class="link-button">Save</button>
+                </div>
+            </form>
+        </div>
+        <!--//내용끝-->

@@ -1,0 +1,53 @@
+	<div class="con_24 article" ng-controller="TutorRankingController">
+		<form class="hidden" name="form_tutorRanking" action="controller/tutor_ranking.php" ng-asyncform="auto" param="param">
+    		<input type="text" name="tutorseq" ng-model="param.tutorseq"/>
+    		<input type="text" name="count" ng-model="param.count"/>
+    		<input type="text" name="page" ng-model="param.page"/>
+    	</form>
+        <div class="con_24_top">
+            <div class="pic">
+            	<span class="pic_area_inner">
+            		<img ng-src="member.imgfile" class="mask" ng-if="member.imgfile"/>
+            		<img src="img/pic_man.jpg" ng-if="!member.imgfile"/>
+            	</span>
+            </div>
+            <ul>
+                <li class="name"><span>{{member.ename}}</span><a href="#/tutor/modify" class="va-middle"><i class="icon icon-setting"></i><span class="hidden">Modify</span></a></li>
+                <li class="desc">My Recent 3 months My Ranking</li>
+                <li class="num point-color">{{ranking.score}}</li>
+            </ul>
+        </div>
+        <!--//con_24_top-->
+
+        <div class="top10">
+            <dl class="top10_tit">
+                <dt>Top 10 Facilitator <a href="#/tutor/contents/rankingtip" class="floatRight"><i class="icon icon-i"></i><span class="hidden">Information</span></a></dt>
+                <dd>The CARROT Instructor Ranking system is <b>updated daily.</b></dd>
+            </dl>
+            <!--//top10_tit-->
+            <ul class="top10_list">
+                <li class="list" ng-repeat="item in ranking.list">
+                	<b class="num">{{item.ranking}}.</b>
+                	<span class="pic">
+                		<span class="pic_area_inner">
+	                		<img ng-src="http://itm.carrotkr.com/html/data/tutorphoto/{{item.imgfile}}" class="mask" ng-if="item.imgfile"/>
+	                		<img src="img/pic_man.jpg" ng-if="!item.imgfile"/>
+	                	</span>
+	                </span>
+	                <strong class="name">{{item.ename}}</strong>
+	                <span class="floatRight">
+	                	<i class="va-middle icon icon-crown1" ng-if="item.ranking == 1"></i>
+	                	<i class="va-middle icon icon-crown2" ng-if="item.ranking == 2"></i>
+	                	<i class="va-middle icon icon-crown3" ng-if="item.ranking == 3"></i>
+	                </span>
+                </li>
+                <li class="list text-right" ng-show="eol"></li>
+            </ul>
+            <!--//top10_list-->
+        </div>
+        <!--//top10-->
+
+        <div class="btn_text" ng-hide="eol"><a href="" ng-click="onMoreClick()">more..</a></div>
+
+    </div>
+    <!--//con_24-->

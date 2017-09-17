@@ -1,0 +1,54 @@
+<div ng-controller="ItmController as itm" ng-init="invalidMsg = loc('access.invalid')">
+	<div class="container-wrapper">
+	    <!--왼쪽메뉴-->
+	    <form name="form_memberInfo" action="controller/member_info.php" method="get" ng-asyncform=""></form>
+	    <div data-position="left" data-size="80%" data-fx="reveal" class="sidy__panel" id="sidenav">
+	        <div class="menuTop point-color-bg mobile">
+	            <ul>
+	                <li class="pic_area">
+	                	<span class="pic_area_inner">
+	                		<img ng-src="{{member.imgfile}}" class="mask" ng-if="member.imgfile"/>
+	                		<img src="img/pic_man.jpg" class="mask" ng-if="!member.imgfile"/>
+	                	</span>
+	                </li>
+	                <li class="name"><span>{{member.ename}}</span></li>
+	            </ul>
+	        </div>
+	
+	        <div class="nav" ng-click="onNavClick()">
+	             <ul>
+	                <li><a ng-href="#/user/main" class="nav1" ng-class="{active: isActive('user/main') || isActive('user/class')}">나의 클래스</a></li>
+	                <li><a ng-href="#/user/todayeng/{{today}}/b" class="nav2" ng-class="{active: isActive('user/todayeng')}">Today English</a></li>
+	                <li><a ng-href="#/user/modify" class="nav3" ng-class="{active: isActive('user/modify')}">나의 정보 수정</a></li> 
+	             </ul>
+	        </div><!--//nav-->
+	
+	        <form name="form_logout" action="controller/logout.php" class="btn_logout" ng-controller="LogoutController" x-action ng-asyncform confirm="{{loc('logout.confirm')}}">
+	        	<button type="submit" class="btn-nav-bottom">Logout</button>
+	        </form>
+	
+	    </div>
+	    <!--//왼쪽메뉴-->
+	
+	
+		<div class="main-wrapper slide-right-ani">
+		    <div id="header" class="point-color-bg">
+		        <h1>당근영어</h1>
+		        <form name="form_logout" action="controller/logout.php" class="logout-wrap" ng-controller="LogoutController" x-action ng-asyncform confirm="{{loc('logout.confirm')}}" manual>
+		        	<button type="submit">Logout &nbsp; <i class="icon-logout"></i></button>
+		        </form>
+	            <button data-panel="panel-2" class="sidy--to-open m-sidenav" ng-click="openNav()"><img src="img/btn_my.gif" alt="확장메뉴열기" width="19" height="19" /></button>
+		    </div>
+	    <!--//header-->
+	 
+	        
+	
+			<div id="uiView_main" ui-view data-autoscroll="false" data-ng-class="mainViewAnimation" class="container"></div>
+			<div id="overlay_main" class="overlay" ng-click="closeNav()"></div>
+		<!--//container-->
+		</div><!--sidy__content-->
+	</div>
+	<iframe id="frame_ajaxupload" class="ajaxupload" src="/common/m_file_upload.php"></iframe>
+	<iframe id="frame_ajaxupload_photo" class="ajaxupload" src="/common/m_photo_upload.php"></iframe>
+</div>
+<!--//sidy-->

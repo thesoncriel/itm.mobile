@@ -1,0 +1,95 @@
+<div class="con_17" ng-controller="TutorScheduleWriteController">
+	<form name="form_tutorScheduleWrite" action="controller/tutor_schedule_write.php" method="post" ng-asyncform="" confirm="{{loc('tutor.schedule.write.confirm')}}" ng-init="invalidMsg = loc('input.invalid')">
+		<div class="hidden">
+			<input type="text" name="tutorseq" ng-model="param.tutorseq"/>
+			<input type="text" name="classid" ng-model="param.classid"/>
+		</div>
+		
+        <h2 class="con_17_tit">Other classes except from CARROT English</h2>
+
+        <div class="period_date">
+            <dl>
+                <dt>Class Period</dt>
+                <dd>
+                    <ul>
+                        <li class="w45f">
+                        	<!--<input pickadate type="text" name="sdate" required="" ng-model="param.sdate"/>-->
+                       	  	<input type="date" name="sdate" required="" ng-model="param.sdate" placeholder="ex: 2016-01-01"/>
+                        </li>
+                        <li class="w45f mid">~</li>
+                        <li class="w45f">
+                        	<!--<input pickadate type="text" name="edate" required="" ng-model="param.edate"/>-->
+                        	<input type="date" name="edate" required="" ng-model="param.edate" placeholder="ex: 2016-01-01"/>
+                        </li>
+                    </ul>
+                </dd>
+                <div class="line"></div>
+            </dl>
+        </div>
+        <!--//period_date-->
+
+        <div class="period_day">
+            <dl>
+                <dt>Class Period</dt>
+                <dd>
+                    <ul>
+                        <li><label ng-class="{active: param.cdaysmo}"><input type="checkbox" name="cdaysmo" ng-model="param.cdaysmo" value="Y"/><span>Mo</span></label></li>
+                        <li><label ng-class="{active: param.cdaystu}"><input type="checkbox" name="cdaystu" ng-model="param.cdaystu" value="Y"/><span>Tu</span></label></li>
+                        <li><label ng-class="{active: param.cdayswe}"><input type="checkbox" name="cdayswe" ng-model="param.cdayswe" value="Y"/><span>We</span></label></li>
+                        <li><label ng-class="{active: param.cdaysth}"><input type="checkbox" name="cdaysth" ng-model="param.cdaysth" value="Y"/><span>Th</span></label></li>
+                        <li><label ng-class="{active: param.cdaysfr}"><input type="checkbox" name="cdaysfr" ng-model="param.cdaysfr" value="Y"/><span>Fr</span></label></li>
+                        <li><label ng-class="{active: param.cdayssa}"><input type="checkbox" name="cdayssa" ng-model="param.cdayssa" value="Y"/><span>Sa</span></label></li>
+                        <li><label ng-class="{active: param.cdayssu}"><input type="checkbox" name="cdayssu" ng-model="param.cdayssu" value="Y"/><span>Su</span></label></li>
+                    </ul>
+                </dd>
+                <div class="line"></div>
+            </dl>
+        </div>
+        <!--//period_day-->
+
+        <div class="class_time">
+            <dl>
+                <dt>Class Time</dt>
+                <dd>
+                    <ul>
+                        <li class="w45f">
+                        	<!--
+                        	<select class="select-timeinput" name="stime_hour" ng-model="param.stime_hour">
+                        		<option ng-repeat="opt in repeatValues(0, 23, 1, true)" value="{{opt}}">{{opt}}</option>
+                        	</select> : 
+                        	<select class="select-timeinput" name="stime_min" ng-model="param.stime_min">
+                        		<option ng-repeat="opt in repeatValues(0, 55, 5, true)" value="{{opt}}">{{opt}}</option>
+                        	</select>-->
+                        	<input type="time" name="stime" required="" ng-model="param.stime" placeholder="ex: 14:05"/>
+                        </li>
+                        <li class="w45f mid">~</li>
+                        <li class="w45f">
+                        	<!--
+                        	<select class="select-timeinput" name="etime_hour" ng-model="param.etime_hour">
+                        		<option ng-repeat="opt in repeatValues(0, 23, 1, true)" value="{{opt}}">{{opt}}</option>
+                        	</select> : 
+                        	<select class="select-timeinput" name="etime_min" ng-model="param.etime_min">
+                        		<option ng-repeat="opt in repeatValues(0, 55, 5, true)" value="{{opt}}">{{opt}}</option>
+                        	</select>-->
+                        	<input type="time" name="etime" required="" ng-model="param.etime" placeholder="ex: 14:05"/>
+                        </li>
+                    </ul>
+                </dd>
+                <div class="line"></div>
+            </dl>
+        </div>
+        <!--//class_time-->
+
+        <div class="com_name">
+            <dl>
+                <dt>Institute or Company Name</dt>
+                <dd><textarea name="memo" required="" ng-model="param.memo"></textarea></dd>
+            </dl>
+        </div>
+        <!--//com_name-->
+
+        <div class="btn_text"><button type="submit">Add</button></div>
+
+    </form>
+    <!--//con_17-->	
+</div>

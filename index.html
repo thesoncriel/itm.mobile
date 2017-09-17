@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="itm" ng-controller="base" ng-init="defTitle='new ITM'">
+	<head>
+		<meta charset="UTF-8"/>
+		<title ng-bind="defTitle + title"></title>
+		<base href="/spa/"></base>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/respond.css"/>
+		<link rel="stylesheet" type="text/css" href="css/angular-simple-calendar.css"/>
+		<link rel="stylesheet" type="text/css" href="css/icon-pack.css"/>
+		<!--[if lte ie 8]>
+		<script src="/js/lib/html5shiv.min.js"></script>
+		<![endif]-->
+		<!--<script src="js/lib/require.js" data-main="js/main"></script>-->
+		<script src="js/lib/jquery-2.1.4.min.js"></script>
+		<script src="js/lib/jquery.ajaxform.min.js"></script>
+		<script src="js/lib/angular.js"></script>
+		<script src="js/lib/angular-animate.min.js"></script>
+		<script src="js/lib/angular-ui-router.min.js"></script>
+		<script src="js/lib/ng-infinite-scroll.js"></script>
+		<script src="js/lib/angular-simple-calendar.js"></script>
+		<script src="js/lib/angular-simple-dayselector.js"></script>
+		<script src="titm.carrotkr.com/html/js/amcharts/theme/light.js"></script>
+
+		<script src="http://titm.carrotkr.com/html/js/amcharts/amcharts.js"></script>
+		<script src="http://titm.carrotkr.com/html/js/amcharts/pie.js"></script>
+		<script src="http://titm.carrotkr.com/html/js/amcharts/serial.js"></script>
+		<script src="http://titm.carrotkr.com/html/js/amcharts/radar.js"></script>
+		
+		<script src="js/pointcolor.js"></script>
+		<script src="js/app.base.js"></script>
+		<script src="js/controller/LoginController.js"></script>
+		<script src="js/controller/MainController.js"></script>
+		<script src="js/controller/ClassDetailController.js"></script>
+		<script src="js/controller/ClassCommController.js"></script>
+		<script src="js/controller/ClassCommCommentController.js"></script>
+		<script src="js/controller/SurveyController.js"></script>
+	</head>
+	<body ng-init="color = 'mint'">
+		<div data-ui-view="" data-autoscroll="false" data-ng-class="mainViewAnimation" class="wrapper"></div>
+	</body>
+</html>

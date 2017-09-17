@@ -1,0 +1,58 @@
+	<div class="con_5 con_7" ng-controller="TutorClassDetailTodayLessonController">
+		<form name="form_todayLessonList" class="hidden" action="controller/tutor_class_todaylist.php" ng-asyncform="auto" param="param">
+			<input type="text" name="classid" ng-model="param.classid"/>
+			<input type="text" name="datestart" ng-model="param.datestart"/>
+		</form>
+		<div class="tab_con">
+			<div ng-controller="TutorClassDetailTodayLessonWriteController">
+	            <form name="form_todayLessonWrite" class="" action="controller/tutor_class_todaywrite" method="post" ng-asyncform="" param="param" confirm="Are you write?">
+	            	<input type="text" class="hidden" name="classid" ng-model="param.classid" />
+	                <h3 class="lesson_tit">Today’s Lesson</h3>
+	                <!--<div class="textarea" contenteditable="true" ng-model="param.contents">{{param.contents}}</div>-->
+	                <textarea name="contents" rows="6" ng-model="param.contents"></textarea>
+	                <div id="text_todayLessonSample" class="hidden">- Text Book page & title :
+- Absentee's name & reason : 
+- Others : 
+</div>
+	                <div class="text-right">
+	                	<button type="submit" class="link-button">Write</button>
+	                </div>
+	            </form>
+            </div>
+            <!--//lesson_input-->
+			
+			<div>
+				<h3 class="lesson_tit">Lesson List</h3>
+				<div class="lesson_list" ng-repeat="item in todayList">
+	                <div class="list_tit">
+	                    <ul class="floatLeft">
+	                        <li class="pic_area">
+	                        	<img ng-src="img/pic_sample.jpg" alt="Student's Picture" class="in-item-picture" ng-if="item.memberimg != ''"/>
+                    			<img src="img/pic_sample.jpg" alt="Student's Picture" class="in-item-picture" ng-if="item.memberimg == ''"/>
+	                        </li>
+	                        <li class="name">{{item.ename}}</li>
+	                        <div class="line"></div>
+	                    </ul>
+	                    <ul class="floatRight">
+	                        <li class="date point-color">{{item.createdate}}</li>
+	                    </ul>
+	                    <div class="line"></div>
+	                </div>
+	                <!--//list_tit-->
+	
+	                <p class="list_con" ng-bind-html="item.contents"></p>
+	                <div ng-controller="TutorClassDetailTodayLessonDeleteController" ng-init="param = item">
+		                <form name="form_todayLessonDelete" action="controller/tutor_class_todaydelete.php" ng-asyncform="" confirm="Are you Delete?">
+		                	<div class="hidden">
+		                		<input type="text" name="regid" ng-model="param.regid"/>
+		                	</div>
+		                	<button type="submit" class="link-button">Delete</button>
+		                </form>
+	                </div>
+	            </div>
+	            <!--//lesson_list-->
+			</div>
+
+        </div>
+        <!--//tab_con-->
+    </div>

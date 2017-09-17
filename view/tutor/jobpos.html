@@ -1,0 +1,37 @@
+    <div class="article con_20" ng-controller="TutorJobposController">
+    	<form class="hidden" name="form_tutorJobpos" action="controller/tutor_jobpos.php" ng-asyncform="auto" param="param">
+    		<input type="text" name="count" ng-model="param.count"/>
+    		<input type="text" name="page" ng-model="param.page"/>
+    	</form>
+        <div class="con_20_tit">
+            <h2>Job Positions Available</h2>
+            <p class="desc">
+                Please click 'Area' for further class details.<br />
+                Apply Now Buttons are currently open ones.<br />
+                Please click to apply !
+            </p>
+        </div>
+        <!--//con_20_tit-->
+		<div infinite-scroll="loadMore()" infinite-scroll-distance="2">
+	        <div class="con_20_list" ng-repeat="item in list">
+	            <a ng-href="#/tutor/jobpos/{{item.regid}}">
+	                <strong class="dt">
+	                	<b>{{noFmt(item.regid)}}/</b>{{item.location}}
+	                	<span class="arrow">
+	                		<img src="img/btn_rightArrow.png" width="7" height="12" alt="" />
+	                	</span>
+	                </strong>
+	                <span class="dd">
+	                	{{cdaysFmt(item.cdaysmo, item.cdaystu, item.cdayswe, item.cdaysth, item.cdaysfr, item.cdayssa, item.cdayssu)}}<br/>
+	                	({{dtFmt(item.stimegubun, item.stimehh, item.stimemm)}} ~ {{dtFmt(item.etimegubun, item.etimehh, item.etimemm)}})<br/>
+	                	{{item.visa}} / {{item.language}}<br/>
+	                	{{item.sdate}} ~ {{item.edate}}
+	                </span>
+	            </a>
+	        </div>
+        </div>
+        <!--//con_20_list-->
+    </div>
+    <!--//con_20-->
+
+<!--//본문삽입끝-->

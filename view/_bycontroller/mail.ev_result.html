@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>{{title}}</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script src=""></script>
+	</head>
+	<body>
+	<h1 style="padding:40px 0 15px 0; font-size:24px; font-weight:bold; text-align:center; display:block; width:610px; "><span>{{kname}}</span>'s Evaluation Result</h1>
+	<table width="610" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #d2d2d2; text-align:center; margin-bottom:5px;">	 
+		<tr> 
+			<th width="20%" style="background:#efefef; color:#272727; font-weight:bold; padding:7px ; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; font-size:12px;">Studen</th>
+			<td width="30%" style="padding:7px; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">{{kname}} ({{ename}})</td>
+			<th width="20%" style="background:#efefef; color:#272727; font-weight:bold; padding:7px ; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">Evaluator</th>
+			<td width="30%" style="padding:7px; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">{{ev_ename}}</td>
+		</tr>
+		<tr> 
+			<th width="20%" style="background:#efefef; color:#272727; font-weight:bold; padding:7px ; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">Evaluation Date</th>
+			<td width="30%" style="padding:7px; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">{{montheng}} {{year}}</td>
+			<th width="20%" style="background:#efefef; color:#272727; font-weight:bold; padding:7px ; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">Level</th>
+			<td width="30%" style="padding:7px; border-bottom: 1px solid #d2d2d2; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">{{level}}</td>
+		</tr>
+	</table>
+	<p style="width:610px; text-align:right; margin:0; padding:0;"><a href="#" onclick="-','s1','left=150, top=100, width=660 height=286 scrollbars=no')" style="font-size:10px; text-decoration:underline; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; ">CARROT LEVEL SYSTEM</a></p>
+	<p style="font-size:14px; font-weight:bold; padding-bottom:10px; border-bottom:1px solid #d2d2d2; width:610px; margin-bottom:20px; margin-top:20px; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif;">I. Language Competency</p>
+	<table width="610" border="0" cellspacing="0" cellpadding="0" >	
+		<tr>
+			<td height="65" width="25%" style="text-align:center; font-size:35px; font-weight:normal; color:#ff5500; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; background-image:url('http://newitm.carrotkr.com/spatutor/img/ev_g{{langcomp_flue}}.png'); background-repeat:no-repeat; background-position:top center;" valign="middle">{{langcomp_flue}}</td>
+			<td width="25%" style="text-align:center; font-size:35px; font-weight:normal; color:#ff5500; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; background-image:url('http://newitm.carrotkr.com/spatutor/img/ev_g{{langcomp_accu}}.png'); background-repeat:no-repeat; background-position:top center;" valign="middle">{{langcomp_accu}}</td>
+			<td width="25%" style="text-align:center; font-size:35px; font-weight:normal; color:#ff5500; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; background-image:url('http://newitm.carrotkr.com/spatutor/img/ev_g{{langcomp_pron}}.png'); background-repeat:no-repeat; background-position:top center;" valign="middle">{{langcomp_pron}}</td>
+			<td width="25%" style="text-align:center; font-size:35px; font-weight:normal; color:#ff5500; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; background-image:url('http://newitm.carrotkr.com/spatutor/img/ev_g{{langcomp_comp}}.png'); background-repeat:no-repeat; background-position:top center;" valign="middle">{{langcomp_comp}}</td>
+		</tr>
+		<tr> 
+			<td width="25%" style="text-align:center; padding-top:10px; font-size:11px; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif;">{{fluency}}</td>
+			<td width="25%" style="text-align:center; padding-top:10px; font-size:11px; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; ">{{accuracy}}</td>
+			<td width="25%" style="text-align:center; padding-top:10px; font-size:11px; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif;">{{pronunciation}}</td>
+			<td width="25%" style="text-align:center; padding-top:10px; font-size:11px; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif;">{{comprehension}}</td>
+		</tr>
+	</table>
+	<p style="font-size:14px; font-weight:bold; padding-bottom:10px; border-bottom:1px solid #d2d2d2; width:610px; margin-bottom:15px; margin-top:40px; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; ">II. Class Effort</p>
+	<table width="610" border="0" cellspacing="0" cellpadding="0" >	
+		<tr>
+			<td width="25%" style="font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; "><span style="padding-left:25px;">{{pronunciation}}</span></td>
+			<td width="25%" style="font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif;  font-size:35px; font-weight:normal; color:#3b3b3b; border-right:1px solid #efefef; text-align:right"><span style="padding-right:50px;">{{classeff_pron}}</span></td>
+			<td width="25%" style="font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; "><span style="padding-left:25px;">{{comprehension}}</span></td>
+			<td width="25%" style="font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif;  font-size:35px; font-weight:normal; color:#3b3b3b; text-align:right"><span style="padding-right:50px;">{{classeff_comp}}</span></td>
+		</tr>
+	</table>
+	<p style="width:610px; border-top:1px solid #d2d2d2; margin-top:15px;"></p>
+	<p style="font-size:14px; font-weight:bold; padding-bottom:10px; border-bottom:1px solid #d2d2d2; width:610px; margin-bottom:0px; margin-top:50px; font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; ">Overall Feedback</p>
+	<table width="610" border="0" cellspacing="0" cellpadding="15" valign="middle" class="feedbacktable">
+		<tr> 
+			<td style="font-family:'Malgun Gothic', '돋움', Dotum, hevetica, sans-serif; font-size:12px; ">{{overall_feedback}}</td>
+		</tr>
+	</table>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<div class="body_con2" ng-controller="MemberInfoSearchController" ng-init="invalidMsg=loc('input.invalid')">
+<div>	
+
+	<!--내용시작-->
+	<div class="con2">
+		<div class="con2_box">
+			<h1 class="point-color">ID Search</h1>
+
+			<form name="form_memberInfoSearch" action="controller/member_idsearch.php" method="post" novalidate ng-asyncform>
+				<div class="input_area">
+					<div class="form-group"><label>Name</label><input type="text" required="" name="uname" placeholder="Your Name (Kor or Eng)" ng-model="param.uname"/></div>
+					<div class="form-group"><label>Email</label><input type="email" required="" name="uemail" placeholder="enter email..." ng-model="param.uemail" /></div>
+				</div>
+				<!--//input_area-->
+
+				<div class="search"><button type="submit" class="point-color-bg">Search</button></div>
+			</form>
+
+			<div class="button_forget">
+				<a href="#/login" class="fir">Login</a>
+				<a href="#/pwsearch">Forget your password?</a>
+			</div>
+			<!--//button_forget-->
+		</div>
+		<!--//con2_box-->
+
+		<div class="copyright"><small>Copyright ⓒ CARROT Global Inc. All Right Reseved.</small></div>
+	</div>
+	<!--//내용끝-->
+
+</div>
+<!--//wrap sidy-->
+</div>

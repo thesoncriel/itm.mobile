@@ -1,0 +1,75 @@
+	<div class="con_23" ng-controller="TutorStatePaymentController">
+		<form class="hidden" name="form_tutorPayment" action="controller/tutor_statepay.php" ng-asyncform="auto" param="param">
+			<input type="text" name="tutorseq" ng-model="param.tutorseq"/>
+			<input type="text" name="year" ng-model="param.year"/>
+			<input type="text" name="month" ng-model="param.month"/>
+		</form>
+        <div day-selector options="selectorOptions">{{month}} {{year}}</div>
+
+        <em class="pay_date">A pay date: {{payment.paydate}}</em>
+
+        <div class="payment">
+            <h3 class="payTit">Payment Description</h3>
+            <dl>
+                <dt>Class Payment</dt>
+                <dd>&nbsp; {{payment.class_payment | currency : "&#xffe6; " : 0}}</dd>
+                <dt>Transportation Fee</dt>
+                <dd>&nbsp; {{payment.trans_fee | currency : "&#xffe6; " : 0}}</dd>
+                <dt>Extra Payment</dt>
+                <dd>&nbsp; {{payment.extra_payment | currency : "&#xffe6; " : 0}}</dd>
+                <dt>Others</dt>
+                <dd>&nbsp; {{payment.others | currency : "&#xffe6; " : 0}}</dd>
+                <dt class="total">Wage Total</dt>
+                <dd class="total point-color">&nbsp; {{payment.wage_total | currency : "&#xffe6; " : 0}}</dd>
+            </dl>
+            <h3 class="payTit">Tax</h3>
+            
+            <dl>
+                <dt>Income Tax</dt>
+                <dd>&nbsp; {{payment.income_tax | currency : "&#xffe6; " : 0}}</dd>
+                <dt>Residential Tax</dt>
+                <dd>&nbsp; {{payment.resid_tax | currency : "&#xffe6; " : 0}}</dd>
+                <dt class="total">Tax Total</dt>
+                <dd class="total point-color">&nbsp; {{payment.tax_total | currency : "&#xffe6; " : 0}}</dd>
+            </dl>
+             <h3 class="payTit">Total</h3>
+             
+             <dl class="last">
+                <dt>Material Cost</dt>
+                <dd>&nbsp; {{payment.material_cost | currency : "&#xffe6; " : 0}}</dd> 
+            </dl>
+            
+            <dl class="amount point-color-bg">
+                <dt>Payment Total</dt>
+                <dd>&nbsp; {{payment.payment_total | currency : "&#xffe6; " : 0}}</dd> 
+            </dl>
+        </div>
+        <!--//payment-->
+
+        <div class="details">
+            <h3 class="detailTit">Material Cost Details</h3>
+			<div>
+				<div class="details_list" ng-repeat="item in payment.materials">
+	                <p class="listTit">{{item.subject}} -<span>{{item.date}}</span></p>
+	                <dl>
+	                    <dt>{{item.prod_name}}<br />
+	                    	<span>({{item.prod_company}})</span>
+	                    </dt>
+	                    <dd class="point-color">{{item.price | currency : "&#xffe6; " : 0}}</dd>
+	                </dl>
+	                <div class="line"></div>
+	            </div>
+	            <div class="details_list" ng-if="!payment || payment.materials.length == 0">
+	            	&nbsp; &nbsp; have no items...
+	            </div>
+			</div>
+            <!--//details_list-->
+
+            <blockquote class="ment point-color">We highly appreciate your sincere efforts.</blockquote>
+
+            <div class="btn_text"><a href="#" ng-back>Back</a></div>
+        </div>
+        <!--//details-->
+
+    </div>
+    <!--//con_23-->

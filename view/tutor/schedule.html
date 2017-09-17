@@ -1,0 +1,36 @@
+	<div class="con_16" ng-controller="TutorScheduleController">
+        <!--//con_16_info-->
+        <div class="wrap-calendar alt1">
+            <form name="form_tutorSchedule" class="hidden" action="controller/tutor_schedule.php" ng-asyncform="auto" param="param">
+            	<input type="text" name="tutorseq" ng-model="param.tutorseq"/>
+                <input type="text" name="year" ng-model="param.year"/>
+                <input type="text" name="month" ng-model="param.month"/>
+            </form>
+            
+			<simple-calendar events="schedule" options="calendarOptions">
+		    	<div class="con_16_info">
+		    		<p class="desc">Please find the below monthly schedule of  your current class / Click the class name for detailed class information</p>
+		    		<a class="add-except" href="#/tutor/schedule/write"><i class="icon icon-circleplus"></i> Other classes except from CARROT English</a>
+		        </div>
+	    	</simple-calendar>
+
+            
+        </div>
+        <!--//calendar-->
+
+        <div class="calendar_onDesc" ng-controller="TutorScheduleListByDateController">
+        	<form name="form_tutorScheduleListByDate" class="hidden" action="controller/tutor_schedulelistbydate.php" ng-asyncform="" param="param">
+        		<input type="text" name="tutorseq" ng-model="param.tutorseq"/>
+        		<input type="text" name="date" ng-model="param.date"/>
+        	</form>
+            <h4 class="point-color">{{date.monthEng}} {{date.day}}, {{date.year}}</h4>
+            <ul>
+            	<li ng-class="{exceptclass: item.status == 1}" ng-repeat="item in list">{{item.memo}} ({{item.stime}}~{{item.etime}})</li>
+            </ul>
+        </div>
+        <!--//calendar_onDesc-->
+
+        <div class="btn_text"><a href="#" ng-back>Back</a></div>
+
+    </div>
+    <!--//con_16-->

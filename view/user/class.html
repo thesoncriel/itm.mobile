@@ -1,0 +1,53 @@
+<!--내용시작-->
+<div class="con5" ng-controller="ClassDetailController">
+	<form class="hidden" name="form_classDetail" action="controller/class_detail.php" ng-asyncform="auto" param="param">
+		<input type="text" name="regid" ng-model="param.regid"/>
+	</form>
+    <div class="con5_tit">
+        <h2 class="mTit">{{classInfo.companyname}}</h2>
+        <h3 class="tit">{{classInfo.classname}}</h3>
+    </div>
+
+    <!--//con5_tit-->
+
+    <div class="info">
+        <dl>
+		 <dd class="infoList">
+                <ul>
+                    <li class="time">{{dtFmt(classInfo.stimegubun, classInfo.stimehh, classInfo.stimemm)}} ~ {{dtFmt(classInfo.etimegubun, classInfo.etimehh, classInfo.etimemm)}}</li>
+                    <li class="date">주 {{cdaysCount(classInfo.cdaysmo, classInfo.cdaystu, classInfo.cdayswe, classInfo.cdaysth, classInfo.cdaysfr, classInfo.cdayssa, classInfo.cdayssu)}}회 ({{cdaysFmt(classInfo.cdaysmo, classInfo.cdaystu, classInfo.cdayswe, classInfo.cdaysth, classInfo.cdaysfr, classInfo.cdayssa, classInfo.cdayssu)}})</li>
+                    <li class="com"><a ng-href="#/user/classcomm/{{param.regid}}/list" ng-if="classInfo.boardseq > 0">Class Community &#62;</a></li>
+                </ul>
+            </dd>
+            <dd>
+                <div class="attend-rate">                	
+                	<div id="chart_userClassReport_attendRate" class="chart chart-full-height chart-absolute" ng-amchart="circprog" color="{{color}}" ng-model="classInfo.attend_rate">                		
+                	</div>                	
+                	<span class="ng-bugfix">{{classInfo.attend_rate}}%</span>
+                	<br/>
+                	<span class="rate">출석률</span>                	
+                </div>
+            </dd>
+            <dd class="cour_com">
+                <div class="lecture-progress">
+                    <div class="lecture-progress-label">수업 진행률<span class="lecture-progress-status">{{classInfo.course_completion}}%</span></div>
+                    <div class="graphBar"><div class="point-color-bg" style="width:{{classInfo.course_completion}}%;"></div></div>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <!--//info-->
+
+    <ul class="tab">
+        <li ng-class="{active: tab == 'info'}"><a class="link-tab" ng-href="#/user/class/{{param.regid}}/info">Class 정보</a></li>
+        <li ng-class="{active: tab == 'attend'}"><a class="link-tab" ng-href="#/user/class/{{param.regid}}/attend">출결 현황</a></li>
+        <li ng-class="{active: tab == 'plans'}"><a class="link-tab" ng-href="#/user/class/{{param.regid}}/plans">강의 계획서</a></li>
+        <li ng-class="{active: tab == 'report'}"><a class="link-tab" ng-href="#/user/class/{{param.regid}}/report">월별평가서</a></li>
+    </ul>
+    <!--//tab-->
+	<div>
+		<div id="uiView_classDetail" ui-view data-autoscroll="false" data-ng-class="mainViewAnimation" class=""></div>
+	    <div class="btn_textP"><a href="#/user/main">List</a></div>
+	</div>
+</div>
+<!--//내용끝-->

@@ -1,0 +1,117 @@
+<div class="sidy" ng-controller="ItmController">
+    <!--왼쪽메뉴-->
+    <div data-position="left" data-size="80%" data-fx="reveal" class="sidy__panel" id="panel-2">
+        <div class="menuTop">
+            <ul>
+                <li class="pic_area"></li>
+                <li class="name"><span>Ferdianand John</span></li>
+            </ul>
+        </div>
+
+        <div class="nav">
+             <ul>
+                <li class=""><a href="#" class="nav1">Current Classes<div class="circle circle_green">139</div></a></li>
+                <li class=""><a href="#" class="nav2">Quit Classes<div class="circle">1</div></a></li>
+                <li class="on"><a href="#" class="nav3">My Schedule</a></li>
+                <li class=""><a href="#" class="nav4">My Application Status</a></li>
+                <li class=""><a href="#" class="nav5">Job Positions A.V</a></li>
+                <li class=""><a href="#" class="nav6">Monthly Payment</a></li>
+                <li class=""><a href="#" class="nav7">Statement of Payment</a></li>
+                <li class="last"><a href="#" class="nav8">Setting</a></li>
+             </ul>
+        </div><!--//nav-->
+
+        <div class="btn_logout"><a href="#">Logout</a></div>
+
+    </div>
+    <!--//왼쪽메뉴-->
+
+
+	<div class="sidy__content">
+	    <div id="header">
+	        <h1>ITM</h1>
+	        <a href="#" class="state">Logout</a>
+            <button data-panel="panel-2" class="sidy--to-open"><img src="img/btn_my.gif" alt="확장메뉴열기" width="19" height="19" /></button>
+	    </div>
+    <!--//header-->
+ 
+        
+
+	<div class="container" ng-controller="MainController">
+	  	<form name="form_tutorMain" action="controller/main.php" method="get" x-action ng-asyncform="auto">
+	  		<input type="hidden" name="only_info" value="" ng-model="onlyInfo"/>
+	  	</form>
+	  <!--//본문삽입-->
+	  	<div class="w_today">
+            <h4>Today English</h4>
+            <p class="today_text">
+                <em class="pull-left fir">We give employees a four-week paid everyday.</em>
+                <span class="pull-left mid">우리는 직원들에게 4주간의 유급휴가를 제공합니다.</span>
+                <a href="#" class="pull-left more">more...</a>
+            </p>
+        </div>
+    <!--//m_today-->
+	  
+	    <div class="person_area">
+	        <h3 class="pic_area">
+	        	<span class="pic_area_inner"><img src="http://titm.carrotkr.com/html/data/tutorphoto/{{pcinfo.imgfile}}"/></span></h3>
+	        <div class="info">
+	            <h3 class="name">{{pcinfo.ename}}</h3>
+	            <dl class="fir">
+	                <dt>{{pcinfo.current_classes}}</dt>
+	                <dd>Current Classes</dd>
+	            </dl>
+	            <dl>
+	                <dt>{{pcinfo.total_class_completion}}%</dt>
+	                <dd>Total class completion</dd>
+	            </dl>
+	        </div>
+	        <!--//info-->
+	    </div>
+	    <!--//person_area-->
+	
+	    <div class="line"></div>
+	
+	    <div class="wrap_course_area">
+	        <div class="course_area" ng-repeat="item in clist">
+	            <dl class="tit">
+	                <dt>{{noFmt($index + 1)}}</dt>
+	                <dd>Course completion <b>{{item.course_completion}}%</b></dd>
+	            </dl>
+	            <div class="line"></div>
+	
+	            <ul class="graphBar">
+	                <li><div style="width: {{item.course_completion}}%;"></div></li>
+	            </ul>
+	
+	            <div class="line"></div>
+	
+	            <div class="info">
+	                <div class="info_con">
+	                    <dl>
+	                        <dt><a href="#">{{item.classname}}<span class="circle">{{item.classno}}</span><span class="class_state active">수업중</span></a></dt>
+	                        <dd>{{item.companyname}}</dd>
+	                    </dl>
+	                    <ul>
+	                        <li class="time">{{dtFmt(item.stimegubun, item.stimehh, item.stimemm)}} ~ {{dtFmt(item.etimegubun, item.etimehh, item.etimemm)}}</li>
+	                        <li class="date">
+	                        	{{cdaysFmt(item.cdaysmo, item.cdaystu, item.cdayswe, item.cdaysth, item.cdaysfr, item.cdayssa, item.cdayssu)}}
+	                        	<a href="#" class="btn_community">Class Community&nbsp;&nbsp;&nbsp;&#62; <span class="circle circle-w18-cyan">14</span></a></li>
+	                    </ul>
+	                </div>
+	                <!--//info_con-->
+	            </div>
+	            <!--//info-->
+	        </div>
+	        <!--//course_area-->
+	
+	    </div>
+	    <!--//wrap_course_area-->
+	    </div>
+	    <!--// .container -->
+	    <!--//본문삽입끝-->
+	<!--//container-->
+	</div><!--sidy__content-->
+
+</div>
+<!--//sidy-->

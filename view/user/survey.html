@@ -1,0 +1,93 @@
+<div class="con11" ng-controller="SurveyForUserController">
+	<form class="hidden" name="form_surveyDetail" action="controller/survey_detail.php" x-action ng-asyncform="auto" param="param">
+		<input type="text" name="classid" ng-model="param.classid"/>
+	</form>
+	<div class="con11_tit">
+        <strong class="mTit">만족도 조사</strong>
+        <h1 class="tit">{{survey.detail.sc_title}}</h1>                    
+        <h2 class="sTit">설문기간 : {{survey.detail.sv_start}} ~ {{survey.detail.sv_end}}</h2>
+    </div>
+	<p class="ment" ng-html="survey.detail.sc_content"></p>
+    <!--//ment-->
+
+    <form name="form_surveySubmit" action="controller/survey_submit.php" method="post" class="survey" x-action ng-asyncform param="surveyParam" confirm="{{loc('survey.submit.confirm')}}">
+    	<var ng-init="failMsg = loc('survey.submit.fail')"></var>
+    	<var ng-init="invalidMsg = loc('input.invalid')"></var>
+    	<div class="hidden">
+    		<input type="text" name="sc_no" ng-model="surveyParam.sc_no"/>
+	    	<input type="text" name="ms_no" ng-model="surveyParam.ms_no"/>
+	    	<input type="text" name="email" ng-model="surveyParam.email"/>
+    	</div>
+    	
+        <div class="survey_one" ng-repeat="item in survey.itemList">
+            <h4 class="bTit" ng-if="item.sci_depth == 0">{{item.sci_subject}}{{end()}}</h4>
+            
+            <div class="survey_question" ng-if="item.sci_depth == 1">
+            	<span ng-init="num = next()"></span>
+            	<span ng-init="idx = index()"></span>
+            	<span ng-init="surveyParam['m' + idx] = ''"></span>
+            	<div ng-if="item.sci_type == 0">
+	                <div class="survey_q">
+	                    <h5><span class="num">{{num}}. </span><span ng-bind-html="item.sci_subject"></span></h5>
+	                </div>
+	                <!--//survey_q-->
+	                <span ng-init="act = []"></span>
+	                <div class="survey_a btn-group point-color-group">
+	                	<label class="btn" ng-class="{active: act[idx] == $index}" ng-repeat="input in [0,1,2,3,4,5,6]">
+	                		<input type="radio" name="m{{idx}}" value="{{$index + 1}}" ng-model="surveyParam['m' + idx]" ng-change="act[idx] = $index"/>
+	                		{{$index + 1}}
+	                	</label>
+	                </div>
+	                <div class="decoration-under-smile">
+	                	<span class="fir"></span>
+	                	<span class="mid"></span>
+	                	<span class="last"></span>
+	                </div>
+	                <!--//survey_a-->
+                </div>
+                <div ng-if="item.sci_type == 1">
+                	<div class="survey_q">
+	                    <h5><span class="num">{{num}}. </span><span ng-bind-html="item.sci_subject"></span></h5>
+	                </div>
+	                <!--//survey_q-->
+	                <div class="survey_a chk-group" ng-init="act = []">
+	                	<label>
+	                		<span class="chk" ng-class="{active: act[idx] == 1}">
+	                			<input type="radio" name="m{{idx}}" value="1" ng-model="surveyParam['m' + idx]" ng-change="act[idx] = 1"/>
+	                		</span>
+	                		{{item.sci_msg1}}
+	                	</label>
+	                	<label>
+	                		<span class="chk" ng-class="{active: act[idx] == 2}">
+	                			<input type="radio" name="m{{idx}}" value="2" ng-model="surveyParam['m' + idx]" ng-change="act[idx] = 2"/>
+	                		</span>
+	                		{{item.sci_msg2}}
+	                	</label>
+	                	<label>
+	                		<span class="chk" ng-class="{active: act[idx] == 3}">
+	                			<input type="radio" name="m{{idx}}" value="3" ng-model="surveyParam['m' + idx]" ng-change="act[idx] = 3"/>
+	                		</span>
+	                		{{item.sci_msg3}}
+	                	</label>
+	                </div>
+	                <!--//survey_a-->
+                </div>
+                <div ng-if="item.sci_type == 2">
+                	<div class="survey_q survey_q_wide">
+	                    <h5><span class="num">{{num}}. </span><span ng-bind-html="item.sci_subject"></span></h5>
+	                </div>
+	                <!--//survey_q-->
+	                <div class="survey_a survey_a_wide">
+	                    <textarea name="m{{idx}}" ng-model="surveyParam['m' + idx]"></textarea>
+	                </div>
+	                <!--//survey_a-->
+                </div>
+            </div>
+            <!--//survey_question-->
+        </div>{{end()}}{{finish()}}
+        <!--//survey_one-->
+
+        <div class="btn_text"><button type="submit">Submit</button></div>
+    </form>
+    <!--//survey-->
+</div>

@@ -1,0 +1,102 @@
+				<div class="con16 lesson_con" ng-controller="ClassDetailPlansController">
+					<form name="form_classDetailPlans" action="controller/class_plans.php" x-action ng-asyncform="auto" data-param="param">
+						<input type="hidden" name="regid" ng-model="param.regid"/>
+					</form>
+                    <div class="lesson_area" ng-if="plan1 > 0">
+                        <h3 class="lesson_tit">{{plan1}}. Course Objectives</h3>
+                        <p class="txt">{{plans.lessonPlan.courseobj}}</p>
+                    </div>
+                    <!--//lesson_area-->
+
+                    <div class="lesson_area" ng-if="plan2 > 0">
+                        <h3 class="lesson_tit">{{plan2}}. Lesson Structure / Time Management</h3>
+                        <strong class="time_hour">{{plans.lessonPlan.timemng6}} hrs</strong>
+                        <div class="time">
+                            <dl>
+                                <dt>
+                                    <div class="progress-bar point-color-bg-disable">
+                                    	<span class="progress point-color-bg" style="width: {{accuTimePercent(0)}}%"></span>
+                                    	<span class="progress-mask dot-progress" style="width: {{calcProgressWidth(15)}}px"></span>
+                                    </div>
+                                    <em class="time-label"><span class="minute">{{plans.lessonPlan.timemng1}}</span> min</em>
+                                </dt>
+                                <dd class="desc">Greeting &amp; Assignment Check</dd>
+                            </dl>
+                             <dl>
+                                <dt>
+                                    <div class="progress-bar point-color-bg-disable">
+                                    	<span class="progress point-color-bg" style="width: {{accuTimePercent(1)}}%"></span>
+                                    	<span class="progress-mask dot-progress" style="width: {{calcProgressWidth(15)}}px"></span>
+                                    </div>
+                                    <em class="time-label"><span class="minute">{{plans.lessonPlan.timemng2}}</span> min</em>
+                                </dt>
+                                <dd class="desc">Action Speech &amp; Pronunciation Drill Review & Assignment</dd>
+                            </dl>
+                             <dl>
+                                <dt>
+                                    <div class="progress-bar point-color-bg-disable">
+                                    	<span class="progress point-color-bg" style="width: {{accuTimePercent(2)}}%"></span>
+                                    	<span class="progress-mask dot-progress" style="width: {{calcProgressWidth(15)}}px"></span>
+                                    </div>
+                                    <em class="time-label"><span class="minute">{{plans.lessonPlan.timemng3}}</span> min</em>
+                                </dt>
+                                <dd class="desc">Main Textbook</dd>
+                            </dl>
+                             <dl>
+                                <dt>
+                                    <div class="progress-bar point-color-bg-disable">
+                                    	<span class="progress point-color-bg" style="width: {{accuTimePercent(3)}}%"></span>
+                                    	<span class="progress-mask dot-progress" style="width: {{calcProgressWidth(15)}}px"></span>
+                                    </div>
+                                    <em class="time-label"><span class="minute">{{plans.lessonPlan.timemng4}}</span> min</em>
+                                </dt>
+                                <dd class="desc">Sub Materials</dd>
+                            </dl>
+                             <dl class="last">
+                                <dt>
+                                    <div class="progress-bar point-color-bg-disable">
+                                    	<span class="progress point-color-bg" style="width: {{accuTimePercent(4)}}%"></span>
+                                    	<span class="progress-mask dot-progress" style="width: {{calcProgressWidth(15)}}px"></span>
+                                    </div>
+                                    <em class="time-label"><span class="minute">{{plans.lessonPlan.timemng5}}</span> min</em>
+                                </dt>
+                                <dd class="desc">Review &amp; Assignment</dd>
+                            </dl>
+                        </div>
+                        <!--//time-->
+                    </div>
+                    <!--//lesson_area-->
+
+                    <div class="lesson_area" ng-if="plan3 > 0">
+                        <h3 class="lesson_tit">{{plan3}}. Lesson Plan for Session <span>(Learning Objectives of Each class)</span></h3>
+                        <div class="plan">
+                            <dl class="plan-week-item" ng-repeat="item in plans.lessonPlanWeek">
+                                <dt>
+                                    <span class="circle point-color-bg">{{$index + 1}}</span><br/>
+                                    <span class="week">Week</span>
+                                </dt>
+                                <dd>
+                                    <h4 class="ch">{{item.mainbook}}</h4>
+                                    <p class="desc" ng-bind-html="item.submaterial"></p>
+                                </dd>
+                            </dl>
+                        </div>
+                        <!--//plan-->
+                    </div>
+                    <!--//lesson_area-->
+                    
+
+                    <div class="lesson_area">
+                    	<div ng-if="hasNoPlans">
+                    		강의 기획서가 작성되지 않은 클래스 입니다.
+                    		<br/>
+                    		<br/>
+                    	</div>
+                        <p class="lesson_tit">※ Student’s responsibility for each class</p>
+                        <p class="txt">- Check the each class’ learning schedule and prepare Action speech &amp; do the assignments.<br />
+                        - Pre-read the textbook unit topic before the next class session.</p>
+                    </div>
+                    <!--//lesson_area-->
+                    {{end()}}
+                </div>
+                <!--//lesson_con-->

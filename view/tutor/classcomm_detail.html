@@ -1,0 +1,101 @@
+				<div class="con10 view" ng-controller="ClassCommDetailController">
+                    <form name="form_classCommDetail" action="controller/classcomm_detail.php" x-action ng-asyncform="auto" data-param="param">
+						<input type="hidden" name="classid" ng-model="param.classid"/>
+						<input type="hidden" name="regid" ng-model="param.regid"/>
+					</form>
+					<div class="detail">
+						<div class="list_con">
+	                        
+	                        <div class="list_top">
+	                            <div class="back"><a ng-href="#/{{type}}/classcomm/{{param.classid}}/list">List</a></div>
+	                            <div class="btn-write"><a ng-href="#/{{type}}/classcomm/{{param.classid}}/write"><img src="img/btn_write.png" alt="게시글쓰기" /></a></div>
+	                        </div>
+	                        <!--//list_top-->
+	                        
+	                        <dl class="info">
+	                            <dt class="pic_area">
+	                            	<span class="pic_area_inner">
+	                            		<img ng-src="{{detail.writer_imgfile}}" ng-if="detail.writer_imgfile"/>
+	                            		<img src="img/pic_man.jpg" ng-if="!detail.writer_imgfile"/>
+	                            	</span>
+	                            </dt>
+	                            <dd>{{detail.engname}}<br />
+	                            	<span class="point-color">{{detail.createdate}}</span></dd>
+	                        </dl>
+	                        <!--//info-->
+	
+	                        <p class="content" ng-bind-html="detail.contents"></p>
+	
+	                        <div class="list_button">
+	                            <div class="w_button" ng-show="member.email == detail.email">
+	                            	<div class="inline" ng-controller="ClassCommDeleteController" ng-init="failMsg = 'Fail!'">
+		                            	<form name="form_classCommDelete" action="controller/classcomm_delete.php" x-action ng-asyncform="" data-param="param" data-confirm="Are you Really Delete?">
+		                            		<input type="hidden" name="regid" ng-model="param.regid"/>
+		                            		<button type="submit" class="link-button">Delete</button>
+		                            	</form>
+	                            	</div> &nbsp;
+	                            	<a ng-href="#/{{type}}/classcomm/{{param.classid}}/modify/{{param.regid}}" class="link-button">Modify</a>
+	                            </div>
+	                            <div class="reply"><span><img src="img/icon_tooltip.png" width="15" height="14" alt="" />{{detail.cmtcnt}}</span> · <a ng-href="#/{{type}}/classcomm/{{param.classid}}/list" class="btn_list">List</a></div>
+	                        </div>
+	                        <!--//list_button-->
+	                    </div>
+	                    <!--//list_con-->
+					</div>
+                    
+
+                    <div class="reply" ng-controller="ClassCommCommentWriteController">
+                        <form name="form_classCommCommentWrite" action="controller/classcommcmt_write.php" class="reply_input" x-action ng-asyncform="" confirm="{{loc('classcomm.delete.confirm')}}">
+                        	<div class="hidden">
+                        		<input type="text" name="classid" ng-model="param.classid"/>
+	                        	<input type="text" name="boardid" ng-model="param.boardid"/>
+	                        	<input type="text" name="writer" ng-model="param.writer"/>
+	                        	<input type="text" name="createdate" ng-model="param.createdate"/>
+	                        	<input type="text" name="gubun" ng-model="param.gubun"/>
+	                        	<input type="text" name="email" ng-model="param.email"/>
+                        	</div>
+                            <input type="text" name="contents" value="" placeholder="Reply" ng-model="param.contents"/>
+                            <button type="submit" class="point-color">Write</button>
+                        </form>
+                        <!--//reply_input-->
+
+                        <div class="reply_list">
+                            <div class="reply_list_con" ng-repeat="item in commentList">
+                                
+                                <div class="reply_info">
+                                    <dl class="info">
+                                        <dt class="pic_area">
+                                        	<span class="pic_area_inner">
+			                            		<img ng-src="{{item.writer_imgfile}}" ng-if="item.writer_imgfile"/>
+			                            		<img src="img/pic_man.jpg" ng-if="!item.writer_imgfile"/>
+			                            	</span>
+                                        </dt>
+                                        <dd>{{item.writer_ename}}</dd>
+                                    </dl>
+                                    <div class="date point-color">{{item.createdate}}</div>
+                                </div>
+                                <!--//reply_info-->
+
+                                <p class="txt">{{item.contents}}</p>
+                                <div ng-if="(member.email == item.writer_email) || (member.gubun == 'EMP')">
+                                	<div ng-controller="ClassCommCommentDeleteController" ng-init="failMsg = 'Fail !!'; item = item">
+	                                	<form name="form_classCommCommentDelete" action="controller/classcommcmt_delete.php" ng-asyncform="" data-confirm="Are you sure Delete?">
+	                                		<div class="hidden">
+	                                			<input type="text" name="classid" ng-model="param.classid"/>
+		                                		<input type="text" name="boardid" ng-model="item.boardid"/>
+		                                		<input type="text" name="regid" ng-model="item.regid"/>
+	                                		</div>
+	                                		<button type="submit">Delete</button>
+	                                	</form>
+                                	</div>
+                               	</div>
+                            </div>
+                            <!--//reply_list_con-->
+
+                        </div>
+                        <!--//reply_list-->
+                    </div>
+                    <!--//reply-->
+
+                </div>
+                <!--//view-->

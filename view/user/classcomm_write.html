@@ -1,0 +1,32 @@
+			<div ng-controller="ClassCommModifyController as mod">
+				<form name="form_classCommModify" action="controller/classcomm_write.php" method="post" x-action ng-asyncform="" param="param" confirm="{{loc('classcomm.write.confirm')}}">
+					<input type="text" name="classid" class="hidden" ng-model="param.classid"/>
+					<input type="text" name="regid" class="hidden" ng-model="param.regid"/>
+					
+					<input type="text" name="writer" class="hidden" ng-model="param.writer"/>
+					<input type="text" name="bcode" class="hidden" ng-model="param.bcode"/>
+					<input type="text" name="gubun" class="hidden" ng-model="param.gubun"/>
+					<input type="text" name="email" class="hidden" ng-model="param.email"/>
+					<input type="text" name="korname" class="hidden" ng-model="param.korname"/>
+					<input type="text" name="engname" class="hidden" ng-model="param.engname"/>
+                    <div class="wrap write">
+                        <div class="write_top">
+                            <div>
+                            	<a href="#/{{type}}/classcomm/{{param.classid}}/list">List</a>
+                            	<button type="button" class="floatRight" ng-click="onAjaxUpload()"><i class="icon icon-camera"></i></button>
+                            </div>
+                            
+                        </div>
+                        <!--//write_top-->
+                        <div class="editor" contenteditable="true" ng-model="param.contents">{{param.contents}}</div>
+                        <textarea name="contents" class="hidden">{{param.contents}}</textarea>
+                    </div>
+                    <!--//write-->
+				
+                    <div class="btn_textM">
+                    	<a href="#" class="link-button" ng-back>Cancel</a> &nbsp; &nbsp;
+                    	<button type="submit" class="link-button">Write</button>
+                    </div>
+                    
+                </form>
+            </div>

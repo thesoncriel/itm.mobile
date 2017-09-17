@@ -1,0 +1,85 @@
+	<div class="article con_19 con_21" ng-controller="TutorJobposDetailController">
+        <form class="hidden" name="form_tutorJobposDetail" action="controller/tutor_jobpos_detail.php" ng-asyncform="auto" param="param">
+			<input type="text" name="regid" ng-model="param.regid"/>
+		</form>
+        <h2 class="con_19_tit">Class Details</h2>
+
+        <div class="con_19_list">
+            <dl>
+                <dt>Area</dt>
+                <dd>{{info.location}}</dd>
+            </dl>
+            <dl>
+                <dt>Date</dt>
+                <dd>{{info.sdate}} ~ {{info.edate}}</dd>
+            </dl>
+            <dl>
+                <dt>Day</dt>
+                <dd>{{cdaysFmt(info.cdaysmo, info.cdaystu, info.cdayswe, info.cdaysth, info.cdaysfr, info.cdayssa, info.cdayssu)}}</dd>
+            </dl>
+            <dl>
+                <dt>Time</dt>
+                <dd>{{dtFmt(info.stimegubun, info.stimehh, info.stimemm)}} ~ {{dtFmt(info.etimegubun, info.etimehh, info.etimemm)}}</dd>
+            </dl>
+            <dl>
+                <dt>Visa Type</dt>
+                <dd>{{info.visa}}</dd>
+            </dl>
+            <dl>
+                <dt>Class Type</dt>
+                <dd>{{info.level}}</dd>
+            </dl>
+            <dl>
+                <dt>Language</dt>
+                <dd>{{info.language}}</dd>
+            </dl>
+            <dl>
+            	<dt class="full-header">Job Details</dt>
+            	<dd class="full-header">
+            		<p class="details" ng-bind-html="info.etctext"></p>
+            		<div ng-if="!info.etctext && info.etctext == ' '">No Attention.</div>
+            	</dd>
+            </dl>
+            <h4 class="field-header"></h4>
+            
+        </div>
+        <!--//con_21_list-->
+        
+        <div ng-controller="TutorJobposApplyController">
+        	<form name="form_tutorJobposApply" action="controller/tutor_jobpos_apply.php" method="post" ng-asyncform="" confirm="{{loc('tutor.jobpos.apply.confirm')}}">
+        		<input class="hidden" type="text" name="regid" ng-model="param.regid"/>
+        		<input class="hidden" type="text" name="tutorseq" ng-model="member.tutorseq"/>
+	            <div class="message">
+	                <dl>
+	                    <dt>Apply Message</dt>
+	                    <dd class="message_list">
+	                        <div class="message_tit">
+	                            <ul class="floatLeft">
+	                                <li class="floatLeft pic_area">
+	                                	<span class="pic_area_inner">
+		                            		<img ng-src="{{member.imgfile}}" ng-if="item.writer_imgfile"/>
+		                            		<img src="img/pic_man.jpg" ng-if="!member.imgfile"/>
+		                            	</span>
+	                                </li>
+	                                <li class="floatLeft name">{{member.ename}}</li>
+	                            </ul>
+	                            <ul class="floatRight">
+	                                <li class="date point-color">{{today}}</li>
+	                            </ul>
+	                        </div>
+	                        <!--//message_tit-->
+	                        <div class="line"></div>
+	                    </dd>
+	                    <!--//message_list-->
+	                    <dd>
+	                        <textarea name="applycomment" required=""></textarea>
+	                    </dd>
+	                </dl>
+	            </div>
+	            <!--//message-->
+	
+	            <div class="btn_text"><button type="submit">Apply Now</button></div>
+	        </form>
+        </div>
+    </div>
+    <!--//con_21-->

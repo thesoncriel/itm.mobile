@@ -1,0 +1,58 @@
+<div ng-controller="TodayEnglishController">
+    <form name="form_todayEnglish" class="hidden" action="controller/today_english.php" method="get" x-action ng-asyncform="auto" data-param="param" cache>
+    	<input type="hidden" name="date" ng-model="param.date"/>
+    	<input type="hidden" name="type" ng-model="param.type"/>
+    </form>
+    <!--내용시작-->
+    <div class="con4">
+        <div class="con4_tit">
+            <p class="date">{{todayEnglish.view_date}}</p>
+            <p class="tit">Today English</p>
+        </div>
+        <!--//con4_tit-->
+
+        <ul class="tab">
+            <li><a ng-href="#/user/todayeng/{{param.date}}/b" ng-class="{active: param.type == 'b'}">오늘의 비즈니스 영어</a></li>
+            <li><a ng-href="#/user/todayeng/{{param.date}}/e" ng-class="{active: param.type == 'e'}">오늘의 한마디</a></li>
+        </ul>
+        <!--//tab-->
+
+        <div class="today">
+            <div class="today-wrap" ng-repeat="audio in mp3list"><button ng-click="playAudio()"><img src="img/btn_play.gif" alt="Play" width="" height="" /></button>
+            	
+            	<audio id="audio_todayEnglish" class="hidden" src="{{audio}}" type="audio/mp3" controls=""></audio>
+            </div>
+            <dl>
+                <dt>{{todayEnglish.title}}</dt>
+                <dd>{{todayEnglish.transtitle}}</dd>
+            </dl>
+        </div>
+        <!--//today-->
+
+        <div class="txt">
+            <dl class="exam">
+                <dt>예문</dt>
+                <dd><pre class="pre-line">{{todayEnglish.example}}</pre></dd>
+            </dl>
+            <!--//예문-->
+
+             <dl class="trans">
+                <dt>번역</dt>
+                <dd><pre class="pre-line">{{todayEnglish.transexample}}</pre></dd>
+            </dl>
+            <!--//번역-->
+
+             <dl class="explain">
+                <dt>해설</dt>
+                <dd><pre class="pre-line">{{todayEnglish.content}}</pre></dd>
+            </dl>
+            <!--//해설-->
+        </div>
+        <!--//txt-->
+
+        <div class="btn_textP"><a href="#/user/main">List</a></div>
+
+    </div>
+    <!--//내용끝-->
+
+</div>

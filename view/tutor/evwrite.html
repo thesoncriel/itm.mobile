@@ -1,0 +1,114 @@
+	<div class="con_12" ng-controller="TutorEvaluationDetailController">
+		<form name="form_evaluationDetail" class="hidden" action="controller/tutor_ev_detail.php" ng-asyncform="auto" param="param">
+			<input type="text" name="classid" ng-model="param.classid"/>
+			<input type="text" name="memberseq" ng-model="param.memberseq"/>
+			<input type="text" name="year" ng-model="param.year"/>
+			<input type="text" name="month" ng-model="param.month"/>
+		</form>
+    
+        <div day-selector options="selectorOptions">{{month}} {{year}}</div>
+        <!--//dateArrow-->
+
+        <div class="resultProfile">
+            <ul class="clear-after">
+                <li class="floatLeft pic_area"><span class="img-wrap"><span class="pic_area_inner">
+		        	<img ng-src="http://titm.carrotkr.com/html/data/tutorphoto/{{ev.imgfile}}" class="mask" ng-if="ev.imgfile != ''"/>
+			        <img src="img/pic_man.jpg" ng-if="ev.imgfile == ''"/>
+		        </span></span></li>
+                <li class="floatLeft">
+                    <dl>
+                        <dt>{{ev.kname}} ({{ev.ename}}) <b>’s<br />Evaluation Result</b></dt>
+                        <dd><b>Evaluator</b>{{ev.ev_ename}}</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <!--//resultProfile-->
+        <div ng-controller="TutorEvaluationWriteController" ng-init="selectRange = [1,2,3,4,5,6,7,8,9,10]">
+	        <form name="form_evaluationWrite" action="controller/tutor_ev_write.php" method="post" ng-asyncform="" confirm="{{loc('tutor.ev.write.confirm')}}">
+	        	<div class="hidden">
+	        		<input type="text" name="regid" ng-model="param.regid"/>
+	        		<input type="text" name="memberseq" ng-model="paramCommon.memberseq"/>
+	        		<input type="text" name="classid" ng-model="paramCommon.classid"/>
+	        		<input type="text" name="tutorseq" ng-model="paramCommon.tutorseq"/>
+	        		<input type="text" name="year" ng-model="paramCommon.year"/>
+	        		<input type="text" name="month" ng-model="paramCommon.month"/>
+	        	</div>
+	        	<div ng-init="selectReqMsg='field is required. please select value.'"></div>
+	        	<div ng-init="textareaReqMsg='field Have to use more than 150 words.'"></div>
+	            <div class="resultList">
+	                <dl>
+	                    <dt>Ⅰ. Language Competency</dt>
+	                    <dd>
+	                        <ul class="resultSelect">
+	                            <li>
+	                                <label class="label">Fluency</label>
+	                                <select name="langcomp_flue" required="required" ng-model="param.langcomp_flue">
+	                                    <option value="">Select</option>
+	                                    <option ng-repeat="opt in selectRange" value="{{opt}}">{{opt}}</option>
+	                                </select>
+	                            </li>
+	                            <li>
+	                                <label class="label">Accuracy</label>
+	                                <select name="langcomp_accu" required="required" ng-model="param.langcomp_accu">
+	                                    <option value="">Select</option>
+	                                    <option ng-repeat="opt in selectRange" value="{{opt}}">{{opt}}</option>
+	                                </select>
+	                            </li>
+	                            <li>
+	                                <label class="label">Pronunciation</label>
+	                                <select name="langcomp_pron" required="required" ng-model="param.langcomp_pron">
+	                                    <option value="">Select</option>
+	                                    <option ng-repeat="opt in selectRange" value="{{opt}}">{{opt}}</option>
+	                                </select>
+	                            </li>
+	                            <li>
+	                                <label class="label">Comprehension</label>
+	                                <select name="langcomp_comp" required="required" ng-model="param.langcomp_comp">
+	                                    <option value="">Select</option>
+	                                    <option ng-repeat="opt in selectRange" value="{{opt}}">{{opt}}</option>
+	                                </select>
+	                            </li>
+	                        </ul>
+	                    </dd>
+	                </dl>
+	                <dl ng-if="param.language == 'EN'">
+	                    <dt>Ⅱ. Class Effort</dt>
+	                    <dd>
+	                        <ul class="resultSelect">
+	                        	<li>
+	                                <label class="label">Pronunciation</label>
+	                                <select name="classeff_pron" required="required" ng-model="param.classeff_pron">
+	                                    <option value="">Select</option>
+	                                    <option ng-repeat="opt in selectRange" value="{{opt}}">{{opt}}</option>
+	                                </select>
+	                            </li>
+	                            <li>
+	                                <label class="label">Comprehension</label>
+	                                <select name="classeff_comp" required="required" ng-model="param.classeff_comp">
+	                                    <option value="">Select</option>
+	                                    <option ng-repeat="opt in selectRange" value="{{opt}}">{{opt}}</option>
+	                                </select>
+	                            </li>
+	                        </ul>
+	                    </dd>
+	                </dl>
+	                <dl>
+	                    <dt>Overall Feedback</dt>
+	                    <dd>
+	                    	<div class="textarea ev-textarea" contenteditable ng-model="param.overall_feedback">{{param.overall_feedback}}</div>
+	                        <textarea name="overall_feedback" class="hidden" ng-minlength="150" data-counter=".words-counter" ng-model="param.overall_feedback"></textarea>
+	                        <div class="ment">※ Have to use more than 150 words. <b>[ <span class="point-color" ng-bind="param.overall_feedback.length">0</span> / 150 ]</b></div>
+	                    </dd>
+	                </dl>
+	            </div>
+	            <!--//resultList-->
+	
+	            <div class="btn_text"><a href="#">Cancel</a> <button type="submit">Temporary Write &amp; Preview</button></div>
+	        </form>
+        </div>
+    </div>
+    <!--//con_12-->
+
+<!--//본문삽입끝-->
+</div>
